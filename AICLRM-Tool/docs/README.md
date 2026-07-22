@@ -1,7 +1,7 @@
 # AI Cover Letter & Resume Match Tool — Project Architecture
 
 **Version:** 1.0 (MVP)
-**Owner:** [Your Name]
+**Owner:** [Arshan Munir Shaikh]
 **Last Updated:** July 2026
 
 ---
