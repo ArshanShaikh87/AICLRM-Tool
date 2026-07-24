@@ -61,9 +61,6 @@ export default async function handler(req, res) {
   try {
     coverLetter = await generateText(prompt)
   } catch (err) {
-  console.error("generateText Error:", err);
-  console.error("Status:", err.status);
-  console.error("Message:", err.message);
     const errorCode = mapProviderError(err)
     const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
     return sendError(res, status, errorCode)

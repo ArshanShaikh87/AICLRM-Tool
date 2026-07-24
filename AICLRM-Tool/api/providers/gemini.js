@@ -8,15 +8,8 @@ const MODEL_NAME =
 let client = null
 
 function getClient() {
-console.log("******** VERSION B ********");
- 
+
   const apiKey = process.env.GEMINI_API_KEY
-
-
-
-  console.log("===== GEMINI DEBUG =====");
-  console.log("API Key Exists:", !!apiKey);
-  console.log("Model:", process.env.GEMINI_MODEL);
 
   if (!apiKey) {
     // Lazy check — evaluated on first call, not at module load time,
@@ -53,7 +46,6 @@ export async function generateText(prompt) {
     const result = await model.generateContent(prompt)
     return result.response.text()
   } catch (err) {
-         console.error("Gemini SDK Error:", err);
     const normalized = new Error(err?.message || 'Gemini request failed.')
     normalized.status = err?.status ?? err?.response?.status ?? undefined
     normalized.cause = err
