@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { generateCoverLetter } from './services/api'
 import InputForm from './components/InputForm'
 import OutputDisplay from './components/OutputDisplay'
 
@@ -8,20 +9,23 @@ function App() {
   const [coverLetter, setCoverLetter] = useState('')
   const [missingKeywords, setMissingKeywords] = useState([])
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState('')
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
+    setError('')
+    setCoverLetter('')
+    setMissingKeywords([])
     setLoading(true)
-    setError(null)
 
-    // Temporary dummy logic — will be replaced by services/api.js later
-    setTimeout(() => {
-      setCoverLetter(
-        'Dear Hiring Manager,\n\nThis is a placeholder cover letter generated for UI testing purposes. Once the Claude API integration is complete, this text will be replaced with an actual tailored cover letter based on your resume and the job description.\n\nSincerely,\nCandidate'
-      )
-      setMissingKeywords(['Spring Boot', 'REST API', 'Hibernate', 'MySQL'])
+    try {
+      const result = await generateCoverLetter({ resume, jobDescription })
+      setCoverLetter(result.coverLetter)
+      setMissingKeywords(result.missingKeywords)
+    } catch (err) {
+      setError(err.message)
+    } finally {
       setLoading(false)
-    }, 2000)
+    }
   }
 
   return (
