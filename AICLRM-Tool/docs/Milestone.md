@@ -1,4 +1,4 @@
-# MILESTONE 1
+# MILESTONE 1 --------------------------------------------------------------------
 +------------------------------------------------------+
 |                     Header                           |
 | AI Cover Letter Generator                            |
@@ -17,7 +17,7 @@
 | (Empty State)                                        |
 +------------------------------------------------------+
 
-# MILESTONE 2
+# MILESTONE 2 ------------------------------------------------------------------
 
 +-------------------+
 |    React UI       |
@@ -51,3 +51,15 @@
 +-------------------+
 | React UI          |
 +-------------------+
+
+Milestone 2
+│
+├── ✅ src/services/api.js
+├── ✅ api/generate.js
+├── ✅ api/utils/validator.js
+├── ✅ api/prompts/systemPrompt.js
+├── ✅ App.jsx Integration
+├── ✅ End-to-End Dummy Pipeline
+└── ✅ Milestone 2 Complete
+
+# MILESTONE 3 -------------------------------------------------------------------
