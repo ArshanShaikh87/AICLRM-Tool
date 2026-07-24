@@ -8,7 +8,7 @@ const MODEL_NAME =
 let client = null
 
 function getClient() {
-
+console.log("******** VERSION B ********");
  
   const apiKey = process.env.GEMINI_API_KEY
 
