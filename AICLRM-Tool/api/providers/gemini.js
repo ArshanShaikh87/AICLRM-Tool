@@ -9,10 +9,14 @@ let client = null
 
 function getClient() {
 
+ 
+  const apiKey = process.env.GEMINI_API_KEY
+
+
+
   console.log("===== GEMINI DEBUG =====");
   console.log("API Key Exists:", !!apiKey);
   console.log("Model:", process.env.GEMINI_MODEL);
-  const apiKey = process.env.GEMINI_API_KEY
 
   if (!apiKey) {
     // Lazy check — evaluated on first call, not at module load time,
