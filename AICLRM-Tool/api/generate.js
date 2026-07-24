@@ -1,6 +1,9 @@
 import { validateInput } from './utils/validator.js'
 import { buildSystemPrompt } from './prompts/systemPrompt.js'
 import { generateText } from './providers/gemini.js'
+import { cleanResponseText } from './utils/responseCleaner.js'
+import { isValidCoverLetter } from './utils/responseValidator.js'
+
 
 const ALLOWED_METHOD = 'POST'
 

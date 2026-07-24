@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { generateCoverLetter } from './services/api'
 import InputForm from './components/InputForm'
 import OutputDisplay from './components/OutputDisplay'
@@ -11,7 +11,14 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  // Extra guard against double-fire (e.g. Enter + click racing),
+  // on top of the disabled button state.
+  const requestInFlight = useRef(false)
+
   const handleGenerate = async () => {
+    if (requestInFlight.current) return
+    requestInFlight.current = true
+
     setError('')
     setCoverLetter('')
     setMissingKeywords([])
@@ -25,6 +32,7 @@ function App() {
       setError(err.message)
     } finally {
       setLoading(false)
+      requestInFlight.current = false
     }
   }
 
