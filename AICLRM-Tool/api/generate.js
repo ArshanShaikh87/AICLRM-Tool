@@ -1,5 +1,6 @@
 import { validateInput } from './utils/validator.js'
 import { buildSystemPrompt } from './prompts/systemPrompt.js'
+import { generateText } from './providers/gemini.js'
 
 const ALLOWED_METHOD = 'POST'
 
@@ -13,9 +14,26 @@ function sendError(res, status, code) {
 }
 
 /**
- * Maps any internal result (dummy today, real AI response later) into
- * the one public response contract. This is the single place that
- * defines what the frontend ever sees.
+ * Maps a provider (Gemini today, others later) error into a canonical
+ * error code. Private to this file — if more providers or statuses
+ * are added later, this is the only place that changes.
+ */
+function mapProviderError(error) {
+  switch (error.status) {
+    case 429:
+      return 'rate_limit_exceeded'
+    case 401:
+    case 403:
+    case 500:
+    default:
+      return 'generation_failed'
+  }
+}
+
+/**
+ * Maps any internal result (from any provider) into the one public
+ * response contract. This is the single place that defines what the
+ * frontend ever sees.
  */
 function buildResponse({ coverLetter, missingKeywords }) {
   return {
@@ -29,27 +47,29 @@ export default async function handler(req, res) {
     return sendError(res, 405, 'method_not_allowed')
   }
 
-  try {
-    const { resume, jobDescription } = req.body || {}
+  const { resume, jobDescription } = req.body || {}
 
-    const validationError = validateInput({ resume, jobDescription })
-    if (validationError) {
-      return sendError(res, 400, validationError)
-    }
-
-    // Prompt is built but not sent anywhere yet — placeholder until
-    // the AI provider is wired in.
-    buildSystemPrompt({ resume, jobDescription })
-
-    // Dummy Response Policy: deterministic output, no AI call yet.
-    const dummyResult = {
-      coverLetter:
-        'Dummy cover letter generated for testing purposes. This will be replaced once Claude API integration is complete.',
-      missingKeywords: ['Leadership', 'Docker'],
-    }
-
-    return res.status(200).json(buildResponse(dummyResult))
-  } catch(error) {
-    return sendError(res, 500, 'generation_failed')
+  const validationError = validateInput({ resume, jobDescription })
+  if (validationError) {
+    return sendError(res, 400, validationError)
   }
+
+  const prompt = buildSystemPrompt({ resume, jobDescription })
+
+  let coverLetter
+
+  try {
+    coverLetter = await generateText(prompt)
+  } catch (err) {
+    const errorCode = mapProviderError(err)
+    const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
+    return sendError(res, status, errorCode)
+  }
+
+  return res.status(200).json(
+    buildResponse({
+      coverLetter,
+      missingKeywords: [],
+    })
+  )
 }
