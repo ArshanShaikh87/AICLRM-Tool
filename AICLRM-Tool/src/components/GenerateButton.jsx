@@ -10,7 +10,7 @@ function GenerateButton({ loading = false, disabled = false }) {
     >
       {loading ? 'Generating...' : 'Generate'}
     </button>
-  )
+  ) 
 }
 
 export default GenerateButton
