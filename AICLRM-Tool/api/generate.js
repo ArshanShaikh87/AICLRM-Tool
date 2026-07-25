@@ -4,7 +4,6 @@ import { generateText } from './providers/gemini.js'
 import { cleanResponseText } from './utils/responseCleaner.js'
 import { isValidCoverLetter } from './utils/responseValidator.js'
 
-
 const ALLOWED_METHOD = 'POST'
 
 /**
@@ -59,14 +58,20 @@ export default async function handler(req, res) {
 
   const prompt = buildSystemPrompt({ resume, jobDescription })
 
-  let coverLetter
+  let rawCoverLetter
 
   try {
-    coverLetter = await generateText(prompt)
+    rawCoverLetter = await generateText(prompt)
   } catch (err) {
     const errorCode = mapProviderError(err)
     const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
     return sendError(res, status, errorCode)
+  }
+
+  const coverLetter = cleanResponseText(rawCoverLetter)
+
+  if (!isValidCoverLetter(coverLetter)) {
+    return sendError(res, 500, 'low_quality_output')
   }
 
   return res.status(200).json(
