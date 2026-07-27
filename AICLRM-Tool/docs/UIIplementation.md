@@ -268,6 +268,151 @@ Rules
 • Future theme support.
 
 # M3 — Component Library
+
+>Step 1 — Component Architecture
+Implementation M3 – Step 1
+
+Component Architecture
+
+Purpose
+
+• Build a reusable component hierarchy.
+
+Rules
+
+• Single Responsibility Principle.
+• Four component levels.
+• One-way dependencies.
+• Configurable through props.
+• State owned by the appropriate parent.
+• Business logic stays in feature components.
+
+>Step 2 — Base UI Components
+Implementation M3 – Step 2
+
+Base UI Components
+
+Purpose
+
+• Build reusable UI primitives.
+
+Rules
+
+• Single responsibility.
+• Stateless where possible.
+• Generic props only.
+• No business knowledge.
+• Theme-driven styling.
+• Independently testable.
+
+>Step 3 — Form Components
+Implementation M3 – Step 3
+
+Form Components
+
+Purpose
+
+• Build reusable form building blocks.
+
+Rules
+
+• Compose Base Components.
+• Display validation only.
+• Generic props.
+• Accessible by default.
+• No business logic.
+• Parent owns state.
+
+>Step 4 — Layout Components
+Implementation M3 – Step 4
+
+Layout Components
+
+Purpose
+
+• Create reusable page structure.
+
+Rules
+
+• Separate structure from business logic.
+• Shared container system.
+• Responsive layouts.
+• Semantic HTML landmarks.
+• Layout owns positioning only.
+• Components remain independent.
+
+>Step 5 — Feedback Components
+Implementation M3 – Step 5
+
+Feedback Components
+
+Purpose
+
+• Communicate application state consistently.
+
+Rules
+
+• Dedicated component for each state.
+• Human-readable messages.
+• No business logic.
+• Theme-driven styling.
+• Accessible by default.
+• Reusable across features.
+
+>Step 6 — Composite Components
+Implementation M3 – Step 6
+
+Composite Components
+
+Purpose
+
+• Assemble reusable UI patterns.
+
+Rules
+
+• Compose existing components.
+• No business logic.
+• Generic UI props.
+• Parent owns state.
+• Accessible composition.
+• Reusable across features.
+
+>tep 7 — Component Documentation
+Implementation M3 – Step 7
+
+Component Documentation
+
+Purpose
+
+• Standardize component usage.
+
+Rules
+
+• One documentation template.
+• Document props and callbacks.
+• Include accessibility notes.
+• Document dependencies.
+• Include Do/Don't guidance.
+• Keep docs synchronized with implementation.
+
+>Step 8 — Final Component Review
+Implementation M3 – Final Review
+
+Component Library
+
+Status
+
+LOCKED
+
+Rules
+
+• Layered component architecture.
+• Reusable by default.
+• Business logic isolated.
+• Documentation required.
+• Accessible components.
+• Design System compliance mandatory.
+
 # M4 — Page Assembly
 # M5 — API Integration
 # M6 — Testing & QA
