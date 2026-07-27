@@ -486,19 +486,171 @@ A scalable, consistent, and implementation-ready responsive architecture.
 
 # UI Milestone 7 Accessibility & Final Polish
 
-Step 1 — Accessibility Strategy
+>Step 1 — Accessibility Strategy
+UI M7 – Step 1
 
-Step 2 — Keyboard Navigation
+Accessibility Strategy
 
-Step 3 — Screen Reader Support
+Purpose
 
-Step 4 — Visual Accessibility
+• Make accessibility a core architectural principle.
 
-Step 5 — Motion & Animation Accessibility
+Rules
 
-Step 6 — Edge States & Error UX
+• Accessibility applies to every component.
+• Multiple input methods are supported.
+• Accessibility is integrated into the design system.
+• Every reusable component defines accessibility behavior.
+• Inclusive design takes priority over implementation shortcuts.
 
-Step 7 — UI Consistency Audit
+>Step 2 — Keyboard Navigation
+UI M7 – Step 2
 
-Step 8 — Final UI Architecture Review
+Keyboard Navigation
+
+Purpose
+
+• Support complete keyboard-only operation.
+
+Rules
+
+• Logical Tab order
+• Visible focus indicators
+• Keyboard-operable controls
+• Dialog focus trapping
+• Escape behavior
+• Skip to Main Content
+• No keyboard traps
+• Future-ready navigation
+
+>Step 3 — Screen Reader Support
+UI M7 – Step 3
+
+Screen Reader Support
+
+Purpose
+
+• Provide complete access through assistive technologies.
+
+Rules
+
+• Semantic HTML first
+• Meaningful accessible names
+• Proper form labels
+• Announce AI status changes
+• Announce important errors
+• Accessible dialogs
+• Logical reading order
+• Decorative elements ignored
+• Consistent support across future modules
+
+>Step 4 — Visual Accessibility
+UI M7 – Step 4
+
+Visual Accessibility
+
+Purpose
+
+• Ensure the interface remains readable and understandable for all users.
+
+Rules
+
+• Accessible color contrast
+• Readable typography
+• Visible focus indicators
+• Never rely on color alone
+• Icons support text
+• 200% zoom support
+• High contrast compatibility
+• Accessible forms
+• Consistent dark mode
+
+>Step 5 — Motion & Animation Accessibility
+UI M7 – Step 5
+
+Motion & Animation Accessibility
+
+Purpose
+
+• Use motion to improve usability while respecting accessibility preferences.
+
+Rules
+
+• Motion has a functional purpose
+• Respect reduced motion settings
+• Short, consistent durations
+• Accessible loading indicators
+• Minimal page transitions
+• No decorative continuous motion
+• Animations never block interaction
+
+>Step 6 — Edge States & Error UX
+UI M7 – Step 6
+
+Edge States & Error UX
+
+Purpose
+
+• Provide clear guidance and recovery for every non-ideal scenario.
+
+Rules
+
+• Every state has dedicated UI
+• Explain what happened
+• Explain next action
+• Preserve user data
+• Accessible error handling
+• Never expose internal errors
+• Consistent recovery patterns
+
+>Step 7 — UI Consistency Audit
+UI M7 – Step 7
+
+UI Consistency Audit
+
+Purpose
+
+• Validate one unified design language.
+
+Rules
+
+• Reuse design tokens
+• Reuse components
+• Consistent layouts
+• Consistent interactions
+• Consistent accessibility
+• Consistent responsiveness
+• Consistent messaging
+• Documentation complete
+
+>Step 8 — Final UI Architecture Review
+Frontend Architecture
+
+├── UI M0
+│   ├── Design Planning
+│   └── Product Vision
+│
+├── UI M1
+│   ├── Design Tokens
+│   ├── Typography
+│   ├── Colors
+│   └── Components
+│
+├── UI M2
+│   └── Landing Experience
+│
+├── UI M3
+│   └── Generator Workspace
+│
+├── UI M4
+│   └── Output Experience
+│
+├── UI M5
+│   └── Interaction System
+│
+├── UI M6
+│   └── Responsive System
+│
+└── UI M7
+    └── Accessibility & Final Polish
 
