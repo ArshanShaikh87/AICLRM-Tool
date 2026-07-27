@@ -562,6 +562,34 @@ Outcome
 • Performance expectations frozen.
 • Ready for implementation.
 
-# M5 — API Integration
+# M5 — Implementation Sprint 1
+
+>Step 1 — Project Preparation
+Implementation M5 – Step 1
+
+Project Preparation
+
+Purpose
+
+• Prepare the project for production-quality implementation.
+
+Rules
+
+• Clear folder structure.
+• Single responsibility.
+• Layered architecture.
+• Consistent naming.
+• Predictable imports.
+• Standardized error handling.
+• Git workflow defined.
+
+>Step 2 — Base UI Components
+>Step 3 — Form Components
+>Step 4 — Layout Components
+>Step 5 — Feature Components
+>Step 6 — API Integration
+>Step 7 — Testing & Validation
+>Step 8 — Sprint Review
+
 # M6 — Testing & QA
 # M7 — Production Release
