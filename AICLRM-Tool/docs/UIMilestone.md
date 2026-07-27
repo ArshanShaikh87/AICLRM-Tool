@@ -312,28 +312,193 @@ Interaction layer is frozen and ready for implementation.
 
 # UI M6 — Responsive Optimization
 
-Step 1 — Responsive Strategy
-Step 2 — Layout Breakpoints
-Step 3 — Navigation & Header
-Step 4 — Forms & Inputs
-Step 5 — Output Responsiveness
-Step 6 — Performance on Mobile
-Step 7 — Cross-device Testing Strategy
-Step 8 — Final Responsive Review
+>Step 1 — Responsive Strategy
+UI M6 – Step 1
 
+Responsive Strategy
+
+Purpose
+
+• Build one adaptive experience for all screen sizes.
+
+Principles
+
+• Content-first layouts
+• Flexible containers
+• Responsive components
+• Consistent functionality
+• Accessibility preserved
+
+Rules
+
+• Adapt layout, not workflow.
+• Prioritize readability and usability.
+• Every feature available across all devices.
+
+>Step 2 — Layout Breakpoints
+UI M6 – Step 2
+
+Layout Breakpoints
+
+Purpose
+
+• Build a predictable responsive layout system.
+
+Breakpoints
+
+• Mobile
+• Small Tablet
+• Tablet
+• Laptop
+• Desktop
+• Wide
+
+Rules
+
+• Content-first widths
+• Maximum readable content width
+• Flexible containers
+• Responsive spacing
+• No horizontal scrolling
+• Preserve accessibility across breakpoints
+
+>Step 3 — Navigation & Header
+UI M6 – Step 3
+
+Navigation & Header
+
+Purpose
+
+• Keep navigation simple, responsive, and always available.
+
+Rules
+
+• Minimal header
+• Sticky positioning
+• Responsive heights
+• Visible theme toggle
+• No hamburger menu in MVP
+• Future-ready layout
+• Accessible controls
+
+>Step 4 — Forms & Inputs
+UI M6 – Step 4
+
+Forms & Inputs
+
+Purpose
+
+• Create a consistent, responsive form experience.
+
+Rules
+
+• Labels above inputs
+• Full-width responsive fields
+• Auto-growing textarea
+• Responsive upload area
+• Inline validation
+• Touch-friendly buttons
+• Consistent input states
+• Accessibility-first design
+
+>Step 5 — Output Responsiveness
+UI M6 – Step 5
+
+Output Responsiveness
+
+Purpose
+
+• Deliver a comfortable reading experience across all devices.
+
+Rules
+
+• Centered document
+• Maximum readable width
+• Responsive action bar
+• Natural page scrolling
+• Consistent typography
+• Preserve accessibility
+• Future panels appear below the document
+
+>Step 6 — Performance on Mobile
+UI M6 – Step 6
+
+Performance on Mobile
+
+Purpose
+
+• Deliver a fast experience across mobile devices.
+
+Rules
+
+• Code splitting
+• Lazy loading
+• Lightweight assets
+• GPU-friendly animations
+• On-demand PDF generation
+• Efficient memory usage
+• Preserve user data
+• Minimize unnecessary re-renders
+• Accessibility remains intact
+
+>Step 7 — Cross-device Testing Strategy
+UI M6 – Step 7
+
+Cross-device Testing Strategy
+
+Purpose
+
+• Validate consistent behavior across supported environments.
+
+Rules
+
+• Test multiple screen sizes
+• Test supported browsers
+• Test mouse, keyboard, and touch
+• Include accessibility checks
+• Include performance validation
+• Maintain a reusable regression checklist
+
+>Step 8 — Final Responsive Review 
+Consolidate every responsive design decision into a single, reusable architecture and confirm that the UI is ready for implementation.
+
+UI M6 – Responsive Optimization
+
+Status
+
+COMPLETE
+
+Deliverables
+
+• Responsive Strategy
+• Layout Breakpoints
+• Navigation Rules
+• Responsive Forms
+• Responsive Output
+• Mobile Performance
+• Cross-device Testing
+• Final Architecture Review
+
+Outcome
+
+A scalable, consistent, and implementation-ready responsive architecture.
 ↓
 
-# UI Milestone 7
-Accessibility & Final Polish
+# UI Milestone 7 Accessibility & Final Polish
 
-# UI M0 ---------------------------------------------------------------------------
-│
-├── Step 1 — Product Vision
-├── Step 2 — User Personas
-├── Step 3 — User Journey
-├── Step 4 — Information Architecture
-├── Step 5 — Screen Inventory
-├── Step 6 — Component Inventory
-└── Step 7 — Design Language
+Step 1 — Accessibility Strategy
 
-# one thing is added in UI M0 for concurrent request user dont have add resume for concurrent request resume onced add then user will use multiple time to generate coverletter. 
+Step 2 — Keyboard Navigation
+
+Step 3 — Screen Reader Support
+
+Step 4 — Visual Accessibility
+
+Step 5 — Motion & Animation Accessibility
+
+Step 6 — Edge States & Error UX
+
+Step 7 — UI Consistency Audit
+
+Step 8 — Final UI Architecture Review
+
