@@ -414,6 +414,154 @@ Rules
 • Design System compliance mandatory.
 
 # M4 — Page Assembly
+>Step 1 — Page Architecture
+Implementation M4 – Step 1
+
+Page Architecture
+
+Purpose
+
+• Assemble reusable components into complete pages.
+
+Rules
+
+• Pages orchestrate only.
+• Reuse Component Library.
+• Own page-level state.
+• Delegate business logic.
+• Shared layout shell.
+• Routing-ready architecture.
+
+>Step 2 — Home Page Assembly
+Implementation M4 – Step 2
+
+Home Page Assembly
+
+Purpose
+
+• Assemble the MVP user experience.
+
+Rules
+
+• Reuse Component Library.
+• One responsibility per section.
+• Page coordinates state.
+• Components render UI.
+• Business logic stays below the page.
+• Accessibility-first structure.
+
+>Step 3 — State Integration
+Implementation M4 – Step 3
+
+State Integration
+
+Purpose
+
+• Create predictable application state.
+
+Rules
+
+• Single source of truth.
+• Parent owns state.
+• Children communicate via callbacks.
+• Services handle API communication.
+• One-way data flow.
+• Derived values are not stored.
+
+>Step 4 — Responsive Assembly
+
+Implementation M4 – Step 4
+
+Responsive Assembly
+
+Purpose
+
+• Deliver one application across all screen sizes.
+
+Rules
+
+• Layout adapts.
+• Components stay reusable.
+• Business logic unchanged.
+• Shared container system.
+• Responsive grid.
+• Touch-friendly interactions.
+• Accessibility preserved.
+
+>Step 5 —Navigation & Routing
+Implementation M4 – Step 5
+
+Navigation & Routing
+
+Purpose
+
+• Create a scalable navigation architecture.
+
+Rules
+
+• Router selects pages.
+• Pages assemble UI.
+• Components remain reusable.
+• Human-readable URLs.
+• Accessible navigation.
+• Future-ready route structure.
+• Support lazy-loading.
+
+>Step 6 — Accessibility Review
+Implementation M4 – Step 6
+
+Accessibility Review
+
+Purpose
+
+• Build accessible pages by default.
+
+Rules
+
+• Semantic HTML.
+• Logical heading hierarchy.
+• Keyboard accessibility.
+• Visible focus.
+• Accessible forms.
+• Sufficient contrast.
+• Reduced motion support.
+• Clear error recovery.
+
+>Step 7 — Performance Review
+Implementation M4 – Step 7
+
+Performance Review
+
+Purpose
+
+• Deliver a fast and scalable application.
+
+Rules
+
+• Minimize unnecessary renders.
+• One request per action.
+• Efficient state management.
+• Reusable components.
+• Lazy-load future pages.
+• Optimized assets.
+• Clear loading feedback.
+
+>Step 8 — Final Page Review
+Implementation M4 – Final Review
+
+Status
+
+COMPLETE
+
+Outcome
+
+• Page architecture approved.
+• Component integration validated.
+• Responsive strategy finalized.
+• Accessibility verified.
+• Performance expectations frozen.
+• Ready for implementation.
+
 # M5 — API Integration
 # M6 — Testing & QA
 # M7 — Production Release
