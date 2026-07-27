@@ -1,3 +1,5 @@
+import Spinner from './Spinner'
+
 function Button({
   children,
   onClick,
@@ -48,7 +50,7 @@ function Button({
       {...rest}
     >
       {loading && (
-        <span
+        <Spinner
           aria-hidden="true"
           className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"
         />

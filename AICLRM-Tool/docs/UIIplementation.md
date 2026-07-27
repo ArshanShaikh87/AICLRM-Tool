@@ -631,6 +631,19 @@ Spinner
 ↓
 
 Review
+
+
+
+                    Base UI Components
+        ┌──────────┬──────────┬──────────┬──────────┬──────────┐
+        │          │          │          │          │
+     Button    Textarea    Label      Card     Spinner
+        ▲          ▲
+        │          │
+GenerateButton  TextAreaField
+
+
+
 >Step 3 — Form Components
 >Step 4 — Layout Components
 >Step 5 — Feature Components
