@@ -584,6 +584,53 @@ Rules
 • Git workflow defined.
 
 >Step 2 — Base UI Components
+Step 2.1
+
+Button
+
+↓
+
+Review
+
+↓
+
+Step 2.2
+
+Textarea
+
+↓
+
+Review
+
+↓
+
+Step 2.3
+
+Label
+
+↓
+
+Review
+
+↓
+
+Step 2.4
+
+Card
+
+↓
+
+Review
+
+↓
+
+Step 2.5
+
+Spinner
+
+↓
+
+Review
 >Step 3 — Form Components
 >Step 4 — Layout Components
 >Step 5 — Feature Components
