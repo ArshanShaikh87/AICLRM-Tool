@@ -9,14 +9,15 @@ UI M0 — Design Planning
 └── Step 7 — Design Language
 
 UI M1 — Design System
-        │
-        ├── Colors
-        ├── Typography
-        ├── Spacing
-        ├── Border Radius
-        ├── Shadows
-        ├── Buttons
-        └── Form Components
+
+Step 1 — Design Tokens
+Step 2 — Theme System
+Step 3 — Typography System
+Step 4 — Layout & Grid
+Step 5 — Component Variants
+Step 6 — Icons & Illustrations
+Step 7 — Motion System
+Step 8 — Design Rules
 
 
 ↓
