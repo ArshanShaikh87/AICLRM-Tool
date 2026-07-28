@@ -801,7 +801,21 @@ Loading Flow
 Step 6.6
 Architecture Review
 >Step 7 — Testing & Validation
+Step 7
+
+Deferred
+
+Reason:
+
+Final regression testing will be executed after all MVP UI features are implemented.
 >Step 8 — Sprint Review
+Step 8
+
+Deferred
+
+Reason:
+
+Sprint Review will be conducted after completion of the entire MVP UI implementation.
 
 # M6 — Testing & QA
 # M7 — Production Release
