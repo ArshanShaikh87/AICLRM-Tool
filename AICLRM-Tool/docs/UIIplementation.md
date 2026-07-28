@@ -645,6 +645,35 @@ GenerateButton  TextAreaField
 
 
 >Step 3 — Form Components
+Step 3.1
+TextAreaField
+      │
+      ├── Label
+      │
+      ├── Textarea
+      │
+      └── CharacterCounter
+
+↓
+
+Step 3.2
+GenerateButton Review
+(Already Completed)
+
+↓
+
+Step 3.3
+InputForm
+    │
+    ├── TextAreaField (Resume)
+    ├── TextAreaField (Job Description)
+    └── GenerateButton
+
+↓
+
+Step 3.4
+Form Integration Review
+
 >Step 4 — Layout Components
 >Step 5 — Feature Components
 >Step 6 — API Integration
