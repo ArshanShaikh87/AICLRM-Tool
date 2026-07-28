@@ -773,6 +773,33 @@ EmptyState
 Feature Integration Review
 
 >Step 6 — API Integration
+Step 6.1
+Frontend → Service Layer
+
+↓
+
+Step 6.2
+Service → API Route
+
+↓
+
+Step 6.3
+API Route → Provider
+
+↓
+
+Step 6.4
+Error Flow
+
+↓
+
+Step 6.5
+Loading Flow
+
+↓
+
+Step 6.6
+Architecture Review
 >Step 7 — Testing & Validation
 >Step 8 — Sprint Review
 
