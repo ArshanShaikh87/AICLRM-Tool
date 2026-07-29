@@ -1,6 +1,7 @@
 import Card from './Card'
 import Spinner from './Spinner'
 import CopyButton from './CopyButton'
+import DownloadPdfButton from './DownloadPdfButton'
 import { getErrorMessage } from '../utils/errorMessages'
 
 function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
@@ -46,11 +47,14 @@ function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
   return (
     <Card className="flex w-full flex-col gap-6 text-left">
       <section className="flex flex-col gap-3">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2">
           <h2 className="text-base font-medium text-text">
             Generated Cover Letter
           </h2>
-          <CopyButton text={coverLetter} />
+          <div className="flex items-center gap-2">
+            <CopyButton text={coverLetter} />
+            <DownloadPdfButton text={coverLetter} />
+          </div>
         </div>
 
         <div className="flex flex-col gap-4">
