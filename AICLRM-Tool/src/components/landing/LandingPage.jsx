@@ -1,6 +1,7 @@
 import Navbar from './Navbar'
 import Hero from './Hero'
-import GeneratorPlaceholder from './GeneratorPlaceholder'
+//import GeneratorPlaceholder from './GeneratorPlaceholder'
+import GeneratorSection from './GeneratorSection'
 import TrustSection from './TrustSection'
 import FeaturesSection from './FeaturesSection'
 import HowItWorks from './HowItWorks'
@@ -17,7 +18,7 @@ function LandingPage() {
           <Hero />
         </section>
 
-        <GeneratorPlaceholder />
+        <GeneratorSection />
 
         <section aria-label="Why people trust it">
           <TrustSection />
