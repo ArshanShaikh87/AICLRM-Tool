@@ -9,11 +9,10 @@ function Textarea({
   ...rest
 }) {
   const baseClasses =
-    'w-full resize-y rounded-lg border border-gray-200 bg-white px-3.5 py-3 text-[15px] leading-relaxed ' +
-    'text-gray-900 placeholder-gray-400 transition-colors ' +
-    'focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/40 focus-visible:border-purple-400 ' +
-    'disabled:cursor-not-allowed disabled:opacity-60 ' +
-    'dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-500'
+    'w-full resize-y rounded-lg border border-border bg-surface px-3.5 py-3 text-[15px] leading-relaxed ' +
+    'text-text placeholder-text-soft transition-colors ' +
+    'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:border-accent ' +
+    'disabled:cursor-not-allowed disabled:opacity-60'
 
   const classes = [baseClasses, className].filter(Boolean).join(' ')
 
