@@ -1,12 +1,14 @@
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
+import { useRouter } from '../../router/Router'
 
 const LINKS = [
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'About', href: '#' },
+  { label: 'About', to: '/about' },
+  { label: 'Policies', to: '/policies' },
 ]
 
 function Footer() {
+  const { navigate } = useRouter()
   return (
     <footer className="border-t border-border bg-bg">
       <Container className="flex flex-col gap-8 py-12 sm:flex-row sm:items-start sm:justify-between">
@@ -26,8 +28,13 @@ function Footer() {
 
         <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-text-soft">
-            {LINKS.map(({ label, href }) => (
-              <a key={label} href={href} className="transition-colors hover:text-text">
+            {LINKS.map(({ label, to }) => (
+
+              <a key={label}
+                href={to}
+                onClick={(e) => { e.preventDefault(); navigate(to) }}
+                className="transition-colors hover:text-text"
+              >
                 {label}
               </a>
             ))}

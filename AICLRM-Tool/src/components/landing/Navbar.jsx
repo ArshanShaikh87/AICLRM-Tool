@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from '../../router/Router'
 import { PenLine, MoonStar, Menu, X } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
 import Button from '../Button'
+
 
 function getInitialTheme() {
   const stored = localStorage.getItem('theme')
@@ -18,6 +20,7 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [theme, setTheme] = useState(getInitialTheme)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { path, navigate } = useRouter()
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
@@ -30,10 +33,24 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
-
+  const scrollToTop = () => {
+    if (path !== '/') {
+      navigate('/')
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
   const scrollToGenerator = () => {
-    document.getElementById('generator')?.scrollIntoView({ behavior: 'smooth' })
+    if (path !== '/') {
+      navigate('/')
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById('generator')?.scrollIntoView({ behavior: 'smooth' })
+        })
+      })
+    } else {
+      document.getElementById('generator')?.scrollIntoView({ behavior: 'smooth' })
+    }
     setIsMobileMenuOpen(false)
   }
 
@@ -45,11 +62,10 @@ function Navbar() {
   return (
     <nav
       aria-label="Primary"
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        isScrolled
-          ? 'border-b border-border bg-bg/90 backdrop-blur-md'
-          : 'border-b border-transparent bg-transparent'
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${isScrolled
+        ? 'border-b border-border bg-bg/90 backdrop-blur-md'
+        : 'border-b border-transparent bg-transparent'
+        }`}
     >
       <Container className="flex items-center justify-between py-3.5">
         <button
@@ -68,6 +84,21 @@ function Navbar() {
         <div className="flex-1" />
 
         <div className="hidden items-center gap-2 md:flex">
+          <a href="/about"
+            onClick={(e) => { e.preventDefault(); navigate('/about') }}
+            className={`px-2 text-sm font-medium transition-colors hover:text-text ${path === '/about' ? 'text-text' : 'text-text-soft'
+              }`}
+          >
+            About
+          </a>
+          <a
+            href="/policies"
+            onClick={(e) => { e.preventDefault(); navigate('/policies') }}
+            className={`px-2 text-sm font-medium transition-colors hover:text-text ${path === '/policies' ? 'text-text' : 'text-text-soft'
+              }`}
+          >
+            Policies
+          </a>
           <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
 
           <a
@@ -103,6 +134,19 @@ function Navbar() {
       {isMobileMenuOpen && (
         <div className="border-t border-border bg-bg md:hidden">
           <Container className="flex flex-col gap-1 py-3">
+            <a href="/about"
+              onClick={(e) => { e.preventDefault(); navigate('/about'); setIsMobileMenuOpen(false) }}
+              className="flex h-11 items-center rounded-lg px-3 text-sm font-medium text-text-soft transition-colors hover:bg-surface hover:text-text"
+            >
+              About
+            </a>
+
+            <a href="/policies"
+              onClick={(e) => { e.preventDefault(); navigate('/policies'); setIsMobileMenuOpen(false) }}
+              className="flex h-11 items-center rounded-lg px-3 text-sm font-medium text-text-soft transition-colors hover:bg-surface hover:text-text"
+            >
+              Policies
+            </a>
             <a
               href="https://github.com/"
               target="_blank"
@@ -138,9 +182,8 @@ function ThemeToggle({ isDark, onToggle }) {
       className="relative flex h-10 w-[68px] shrink-0 items-center rounded-full border border-border bg-surface px-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       <span
-        className={`flex h-8 w-8 items-center justify-center rounded-full bg-accent text-accent-text shadow-sm transition-transform duration-300 ease-out ${
-          isDark ? 'translate-x-[28px]' : 'translate-x-0'
-        }`}
+        className={`flex h-8 w-8 items-center justify-center rounded-full bg-accent text-accent-text shadow-sm transition-transform duration-300 ease-out ${isDark ? 'translate-x-[28px]' : 'translate-x-0'
+          }`}
       >
         {isDark ? <MoonStar size={15} /> : <PenLine size={15} />}
       </span>

@@ -1,14 +1,29 @@
 import { useState, useRef } from 'react'
+import { RouterProvider } from 'react-router-dom'
 import { generateCoverLetter } from './services/api'
 import InputForm from './components/InputForm'
 import OutputDisplay from './components/OutputDisplay'
 import LandingPage from './components/landing/LandingPage';
+import About from './pages/About'
+import Policies from './pages/Policies'
 
-function App() {
-  return <LandingPage />;
+function AppRoutes() {
+  const { path } = useRouter()
+
+  if (path === '/about') return <About />
+  if (path === '/policies') return <Policies />
+
+  return <LandingPage />
 }
 
-export default App;
+function App() {
+  return (
+    <RouterProvider>
+      <AppRoutes />
+    </RouterProvider>
+  )
+}
+export default App
 
 // function App() {
 //   const [resume, setResume] = useState('')
