@@ -1,12 +1,57 @@
+import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
+
+const LINKS = [
+  { label: 'Privacy Policy', href: '#' },
+  { label: 'About', href: '#' },
+]
 
 function Footer() {
   return (
-    <Container className="py-8 text-center">
-      <span className="text-sm font-medium text-gray-400 dark:text-gray-500">
-        Footer placeholder
-      </span>
-    </Container>
+    <footer className="border-t border-border bg-bg">
+      <Container className="flex flex-col gap-8 py-12 sm:flex-row sm:items-start sm:justify-between">
+        <div className="max-w-xs">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary font-heading text-xs font-bold text-secondary-text">
+              CL
+            </span>
+            <span className="font-heading text-sm font-semibold text-text">
+              Cover<span className="text-accent">Letter</span>
+            </span>
+          </div>
+          <p className="mt-3 text-sm leading-relaxed text-text-soft">
+            Built for job seekers, not job boards. Paste, tailor, apply.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-text-soft">
+            {LINKS.map(({ label, href }) => (
+              <a key={label} href={href} className="transition-colors hover:text-text">
+                {label}
+              </a>
+            ))}
+          </nav>
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View source on GitHub"
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-text-soft transition-colors hover:bg-surface hover:text-text"
+          >
+            <FaGithub size={17} />
+          </a>
+        </div>
+      </Container>
+
+      <div className="border-t border-border py-5">
+        <Container>
+          <p className="text-center text-xs text-text-soft sm:text-left">
+            © 2026 AI Cover Letter & Resume Match Tool. Built as a personal project.
+          </p>
+        </Container>
+      </div>
+    </footer>
   )
 }
 

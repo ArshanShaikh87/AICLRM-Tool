@@ -9,10 +9,8 @@ import Footer from './Footer'
 
 function LandingPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-100">
-      <header className="sticky top-0 z-10 border-b border-gray-200 bg-white/80 backdrop-blur dark:border-gray-800 dark:bg-black/80">
-        <Navbar />
-      </header>
+    <div className="min-h-screen bg-bg text-text">
+      <Navbar />
 
       <main>
         <section aria-label="Hero">
@@ -21,7 +19,7 @@ function LandingPage() {
 
         <GeneratorPlaceholder />
 
-        <section aria-label="Trust indicators">
+        <section aria-label="Why people trust it">
           <TrustSection />
         </section>
 
@@ -29,7 +27,7 @@ function LandingPage() {
           <FeaturesSection />
         </section>
 
-        <section aria-label="How it works">
+        <section id="how-it-works" aria-label="How it works">
           <HowItWorks />
         </section>
 
@@ -38,9 +36,7 @@ function LandingPage() {
         </section>
       </main>
 
-      <footer className="border-t border-gray-200 dark:border-gray-800">
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   )
 }

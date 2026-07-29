@@ -1,87 +1,129 @@
-import { Sparkles, ShieldCheck, Clock3, FileText, ArrowRight } from 'lucide-react'
+import {
+  ShieldCheck,
+  Clock3,
+  KeyRound,
+  ArrowRight,
+  ArrowDown,
+  Plus,
+  FileText,
+  CheckCircle2,
+} from 'lucide-react'
 import Container from './Container'
+import Button from '../Button'
 
 function Hero() {
   const scrollToGenerator = () => {
     document.getElementById('generator')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const scrollToHowItWorks = () => {
+    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <section className="pt-24 pb-24 md:pt-32 md:pb-32">
-      <Container className="flex flex-col items-center text-center">
-        <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400">
-          <Sparkles size={16} />
-          AI Powered
+    <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+      <div
+        className="pointer-events-none absolute -top-24 right-[-8%] h-[420px] w-[420px] rounded-full bg-accent/25 blur-[110px]"
+        aria-hidden="true"
+      />
+
+      <Container className="relative flex flex-col items-center text-center">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-accent/15 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-secondary dark:text-accent">
+          Built for the Indian job hunt
         </span>
 
-        <h1 className="max-w-3xl text-4xl font-bold leading-tight text-gray-900 sm:text-5xl md:text-6xl dark:text-gray-100">
-          Create Tailored Cover Letters
-          <br />
-          That Get You Noticed
+        <h1 className="mt-6 max-w-3xl font-heading text-4xl font-bold leading-[1.08] tracking-tight text-text sm:text-5xl md:text-[56px]">
+          Turn one resume into the letter every job description asks for.
         </h1>
 
-        <p className="mt-6 max-w-xl text-base text-gray-600 sm:text-lg dark:text-gray-400">
-          Generate personalized, ATS-friendly cover letters in seconds using AI. Match every
-          job application with confidence.
+        <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-text-soft sm:text-[17px]">
+          Paste your resume once. Paste any job description. Get a tailored cover letter
+          and the exact keywords you&apos;re missing — in under thirty seconds.
         </p>
 
-        <button
-          type="button"
-          onClick={scrollToGenerator}
-          aria-label="Get started"
-          className="mt-10 inline-flex items-center gap-2 rounded-xl bg-[#ff4d05] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e64504] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d05] focus-visible:ring-offset-2"
-        >
-          Get Started
-          <ArrowRight size={18} />
-        </button>
-
-        <div className="mt-16 flex flex-col items-center gap-6 sm:flex-row sm:gap-10">
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-            <ShieldCheck size={18} />
-            Privacy First
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-            <Clock3 size={18} />
-            30 Second Generation
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-            <FileText size={18} />
-            ATS Friendly
-          </div>
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
+          <Button variant="primary" onClick={scrollToGenerator}>
+            Start writing — it&apos;s free
+            <ArrowRight size={17} />
+          </Button>
+          <button
+            type="button"
+            onClick={scrollToHowItWorks}
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-[15px] font-medium text-text-soft transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+          >
+            See how it works
+            <ArrowDown size={15} />
+          </button>
         </div>
 
-        <div className="mt-16 w-full max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-8 dark:border-gray-800 dark:bg-gray-900">
-          <div className="flex flex-col gap-6 text-left">
-            <div className="flex flex-col gap-2">
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                Resume
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-text-soft">
+          <span className="inline-flex items-center gap-2">
+            <ShieldCheck size={16} className="text-secondary dark:text-accent" />
+            No sign-up, nothing stored
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <Clock3 size={16} className="text-secondary dark:text-accent" />
+            Ready in ~30 seconds
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <KeyRound size={16} className="text-secondary dark:text-accent" />
+            Flags missing keywords
+          </span>
+        </div>
+
+        {/* Signature element: resume + job description converging into a tailored letter */}
+        <div className="relative mt-16 w-full max-w-2xl">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4">
+            <DocChip label="Resume" lines={['80%', '55%', '68%']} />
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary/10 text-secondary dark:bg-accent/15 dark:text-accent">
+              <Plus size={15} />
+            </span>
+            <DocChip label="Job Description" lines={['90%', '60%', '75%']} align="right" />
+          </div>
+
+          <div className="mx-auto mt-3 h-8 w-px bg-border" aria-hidden="true" />
+
+          <div className="rounded-2xl border-2 border-accent/40 bg-surface p-6 text-left shadow-[0_24px_60px_var(--shadow)] sm:p-7">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-text">
+                <FileText size={16} className="text-secondary dark:text-accent" />
+                Cover Letter — Draft
               </span>
-              <div className="h-3 w-3/4 rounded-full bg-gray-200 dark:bg-gray-800" />
-              <div className="h-3 w-1/2 rounded-full bg-gray-200 dark:bg-gray-800" />
+              <span className="inline-flex items-center gap-1 rounded-full bg-accent/15 px-2.5 py-1 text-xs font-semibold text-secondary dark:text-accent">
+                <CheckCircle2 size={13} />
+                8/10 keywords matched
+              </span>
             </div>
 
-            <div className="flex flex-col gap-2">
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                Job Description
-              </span>
-              <div className="h-3 w-full rounded-full bg-gray-200 dark:bg-gray-800" />
-              <div className="h-3 w-2/3 rounded-full bg-gray-200 dark:bg-gray-800" />
-            </div>
-
-            <div className="h-10 w-full rounded-xl bg-[#ff4d05]/20 dark:bg-[#ff4d05]/20" />
-
-            <div className="flex flex-col gap-2 border-t border-gray-200 pt-6 dark:border-gray-800">
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                Cover Letter
-              </span>
-              <div className="h-3 w-full rounded-full bg-gray-200 dark:bg-gray-800" />
-              <div className="h-3 w-4/5 rounded-full bg-gray-200 dark:bg-gray-800" />
-              <div className="h-3 w-full rounded-full bg-gray-200 dark:bg-gray-800" />
+            <div className="mt-5 flex flex-col gap-2.5">
+              <div className="h-2.5 w-[92%] rounded-full bg-border" />
+              <div className="h-2.5 w-[78%] rounded-full bg-border" />
+              <div className="h-2.5 w-[85%] rounded-full bg-border" />
+              <div className="h-2.5 w-[64%] rounded-full bg-border" />
             </div>
           </div>
         </div>
       </Container>
     </section>
+  )
+}
+
+function DocChip({ label, lines, align = 'left' }) {
+  return (
+    <div
+      className={`rounded-xl border border-border bg-surface p-4 shadow-sm ${
+        align === 'right' ? 'text-right' : 'text-left'
+      }`}
+    >
+      <span className="text-[11px] font-semibold uppercase tracking-wide text-text-soft">
+        {label}
+      </span>
+      <div className={`mt-2.5 flex flex-col gap-1.5 ${align === 'right' ? 'items-end' : 'items-start'}`}>
+        {lines.map((width) => (
+          <div key={width} className="h-2 rounded-full bg-border" style={{ width }} />
+        ))}
+      </div>
+    </div>
   )
 }
 
