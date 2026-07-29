@@ -38,12 +38,32 @@ function getClient() {
  * @param {string} prompt
  * @returns {Promise<string>}
  */
-export async function generateText(prompt) {
+// export async function generateText(prompt) {
+//   const genAI = getClient()
+
+//   try {
+//     const model = genAI.getGenerativeModel({ model: MODEL_NAME })
+//     const result = await model.generateContent(prompt)
+//     return result.response.text()
+//   } catch (err) {
+//     const normalized = new Error(err?.message || 'Gemini request failed.')
+//     normalized.status = err?.status ?? err?.response?.status ?? undefined
+//     normalized.cause = err
+//     throw normalized
+//   }
+// }
+export async function generateText(promptText, image) {
   const genAI = getClient()
 
   try {
     const model = genAI.getGenerativeModel({ model: MODEL_NAME })
-    const result = await model.generateContent(prompt)
+
+    const parts = [{ text: promptText }]
+    if (image?.base64) {
+      parts.push({ inlineData: { data: image.base64, mimeType: image.mimeType } })
+    }
+
+    const result = await model.generateContent(parts)
     return result.response.text()
   } catch (err) {
     const normalized = new Error(err?.message || 'Gemini request failed.')

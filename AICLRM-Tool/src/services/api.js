@@ -15,20 +15,19 @@ const GENERATE_ENDPOINT = '/api/generate'
  * Human-readable details, if any, are for debugging only and are never
  * relied upon by the caller.
  */
-export async function generateCoverLetter(payload) {
+export async function generateCoverLetter({ resume, resumeImage, jobDescription }) {
   let response
 
   try {
     response = await fetch(GENERATE_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ resume, resumeImage, jobDescription }),
     })
   } catch {
-    // Network failure (offline, DNS, CORS, etc.) — normalize into the
-    // same Error contract callers already handle.
     throw new Error('network_error')
   }
+
 
   let data
 

@@ -44,6 +44,15 @@ function buildResponse({ coverLetter, missingKeywords }) {
   }
 }
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '8mb', // images ke base64 size ke liye default 4mb kaafi nahi
+    },
+  },
+}
+
+
 export default async function handler(req, res) {
   if (req.method !== ALLOWED_METHOD) {
     return sendError(res, 405, 'method_not_allowed')

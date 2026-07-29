@@ -7,7 +7,10 @@
  * @param {{ resume: string, jobDescription: string }} payload
  * @returns {string}
  */
-export function buildSystemPrompt({ resume, jobDescription }) {
+export function buildSystemPrompt({ resume, jobDescription, hasResumeImage }) {
+  const resumeSection = hasResumeImage
+    ? `===== RESUME =====\nThe candidate's resume is attached as an image. Read all text from it carefully — experience, skills, education, projects — and treat it exactly as resume text. Never mention that the resume was an image in your output.`
+    : `===== RESUME =====\n${resume}`
   return `You are a senior technical recruiter and professional career coach with years of experience writing cover letters that get candidates interviews.
 
 CORE RULE — SOURCE OF TRUTH:

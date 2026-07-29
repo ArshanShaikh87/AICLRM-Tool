@@ -1,15 +1,19 @@
+import ResumeUpload from './ResumeUpload'
 import TextAreaField from './TextAreaField'
 import GenerateButton from './GenerateButton'
 
 function InputForm({
-  resume,
-  setResume,
+  resumeText,
+  onResumeTextExtracted,
+  onResumeImageExtracted,
+  onResumeClear,
+  hasResume,
   jobDescription,
   setJobDescription,
   onGenerate,
   loading,
 }) {
-  const isDisabled = resume.trim() === '' || jobDescription.trim() === ''
+  const isDisabled = !hasResume || jobDescription.trim() === ''
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -18,14 +22,17 @@ function InputForm({
 
   return (
     <form onSubmit={handleSubmit} className="flex w-full flex-col gap-6">
-      <TextAreaField
-        label="Resume"
-        placeholder="Paste your resume text here..."
-        value={resume}
-        onChange={(e) => setResume(e.target.value)}
-        maxLength={2500}
-        required
-      />
+      <div className="flex w-full flex-col gap-2 text-left">
+        <label className="mb-2 block text-base font-medium text-text">
+          Resume<span className="ml-1 text-accent">*</span>
+        </label>
+        <ResumeUpload
+          resumeText={resumeText}
+          onTextExtracted={onResumeTextExtracted}
+          onImageExtracted={onResumeImageExtracted}
+          onClear={onResumeClear}
+        />
+      </div>
 
       <TextAreaField
         label="Job Description"

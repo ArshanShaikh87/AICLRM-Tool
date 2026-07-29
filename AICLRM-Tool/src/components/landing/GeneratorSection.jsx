@@ -6,7 +6,8 @@ import InputForm from '../InputForm'
 import OutputDisplay from '../OutputDisplay'
 
 function GeneratorSection() {
-  const [resume, setResume] = useState('')
+  const [resumeText, setResumeText] = useState('')
+  const [resumeImage, setResumeImage] = useState(null) // { base64, mimeType } | null
   const [jobDescription, setJobDescription] = useState('')
   const [coverLetter, setCoverLetter] = useState('')
   const [missingKeywords, setMissingKeywords] = useState([])
@@ -15,6 +16,23 @@ function GeneratorSection() {
 
   // Double-submit guard (Enter + click race), on top of disabled button state.
   const requestInFlight = useRef(false)
+
+  const hasResume = resumeText.trim() !== '' || Boolean(resumeImage)
+
+  const handleResumeTextExtracted = (text) => {
+    setResumeText(text)
+    setResumeImage(null)
+  }
+
+  const handleResumeImageExtracted = (image) => {
+    setResumeImage(image)
+    setResumeText('')
+  }
+
+  const handleResumeClear = () => {
+    setResumeText('')
+    setResumeImage(null)
+  }
 
   const handleGenerate = async () => {
     if (requestInFlight.current) return
@@ -26,7 +44,7 @@ function GeneratorSection() {
     setLoading(true)
 
     try {
-      const result = await generateCoverLetter({ resume, jobDescription })
+      const result = await generateCoverLetter({ resume: resumeText, resumeImage, jobDescription, })
       setCoverLetter(result.coverLetter)
       setMissingKeywords(result.missingKeywords)
     } catch (err) {
@@ -58,8 +76,11 @@ function GeneratorSection() {
 
         <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-border bg-surface p-6 shadow-[0_16px_40px_var(--shadow)] sm:p-8">
           <InputForm
-            resume={resume}
-            setResume={setResume}
+            resumeText={resumeText}
+            onResumeTextExtracted={handleResumeTextExtracted}
+            onResumeImageExtracted={handleResumeImageExtracted}
+            onResumeClear={handleResumeClear}
+            hasResume={hasResume}
             jobDescription={jobDescription}
             setJobDescription={setJobDescription}
             onGenerate={handleGenerate}
