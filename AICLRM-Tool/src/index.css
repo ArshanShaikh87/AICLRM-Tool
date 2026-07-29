@@ -3,20 +3,26 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --onyx: rgb(10, 23, 29);
+  --wheat: rgb(255, 246, 233);
+  --oceanic: rgb(0, 63, 71);
+  --nectarine: rgb(255, 189, 118);
+  --white: rgb(255, 255, 255);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  /* LIGHT MODE mapping */
+  --bg: var(--wheat);
+  --surface: var(--white);
+  --text: var(--onyx);
+  --text-soft: rgba(10, 23, 29, 0.65);
+  --accent: var(--nectarine);
+  --accent-text: var(--onyx);
+  --secondary: var(--oceanic);
+  --secondary-text: var(--wheat);
+  --border: rgba(10, 23, 29, 0.12);
+  --shadow: rgba(10, 23, 29, 0.1);
+
+  --sans: 'Poppins', system-ui, sans-serif;
+  --heading: 'Poppins', system-ui, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -34,24 +40,34 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+html.dark {
+  /* DARK MODE mapping */
+  --bg: var(--onyx);
+  --surface: rgb(18, 36, 44);
+  --text: var(--wheat);
+  --text-soft: rgba(255, 246, 233, 0.65);
+  --accent: var(--nectarine);
+  --accent-text: var(--onyx);
+  --secondary: var(--oceanic);
+  --secondary-text: var(--wheat);
+  --border: rgba(255, 246, 233, 0.12);
+  --shadow: rgba(0, 0, 0, 0.45);
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-text-soft: var(--text-soft);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-secondary: var(--secondary);
+  --color-secondary-text: var(--secondary-text);
+  --color-border: var(--border);
+
+  --font-sans: var(--sans);
+  --font-heading: var(--heading);
+  --font-mono: var(--mono);
 }
 
 body {
@@ -74,7 +90,7 @@ h1,
 h2 {
   font-family: var(--heading);
   font-weight: 500;
-  color: var(--text-h);
+  color: var(--text);
 }
 
 h1 {
@@ -99,17 +115,13 @@ p {
   margin: 0;
 }
 
-code,
-.counter {
+code {
   font-family: var(--mono);
   display: inline-flex;
   border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
+  color: var(--text);
   font-size: 15px;
   line-height: 135%;
   padding: 4px 8px;
-  background: var(--code-bg);
+  background: var(--surface);
 }

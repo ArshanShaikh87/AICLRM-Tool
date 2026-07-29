@@ -3,79 +3,53 @@ import { Moon, Sun, Menu, X } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
 
-const GITHUB_URL = 'https://github.com/'
+function getInitialTheme() {
+  const stored = localStorage.getItem('theme')
+  if (stored === 'dark' || stored === 'light') {
+    return stored
+  }
 
-const iconButtonClass =
-  'flex h-11 w-11 items-center justify-center rounded-xl text-gray-600 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d05] dark:text-gray-400 dark:hover:bg-gray-900'
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  return prefersDark ? 'dark' : 'light'
+}
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const [theme, setTheme] = useState(getInitialTheme)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
   useEffect(() => {
-  if (isDark) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-}, [isDark])
+    document.documentElement.classList.toggle('dark', theme === 'dark')
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   useEffect(() => {
     const handleScroll = () => {
-      const shouldBeScrolled = window.scrollY > 20
-
-      setIsScrolled((prev) => {
-        if (prev !== shouldBeScrolled) {
-          return shouldBeScrolled
-        }
-        return prev
-      })
+      setIsScrolled(window.scrollY > 20)
     }
-    
-
-    handleScroll()
 
     window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-
-    setIsMobileMenuOpen(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const scrollToGenerator = () => {
-    document.getElementById('generator')?.scrollIntoView({
-      behavior: 'smooth',
-    })
-
+    document.getElementById('generator')?.scrollIntoView({ behavior: 'smooth' })
     setIsMobileMenuOpen(false)
   }
 
-const toggleTheme = () => {
-  setIsDark((prev) => {
-    const next = !prev
-
-    if (next) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-
-    return next
-  })
-}
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+  }
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev)
   }
+
+  const isDark = theme === 'dark'
 
   return (
     <nav
@@ -87,34 +61,32 @@ const toggleTheme = () => {
       }`}
     >
       <Container className="flex items-center justify-between py-4">
-        {/* Left */}
-        <div className="flex items-center">
-          <button
-            type="button"
-            onClick={scrollToTop}
-            className="cursor-pointer text-lg font-semibold tracking-normal text-gray-900 transition-colors hover:text-[#ff4d05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d05] dark:text-gray-100"
-          >
-            AI Cover Letter
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="cursor-pointer text-lg font-semibold tracking-normal text-gray-900 dark:text-gray-100"
+        >
+          AI Cover Letter
+        </button>
 
-        {/* Right Desktop */}
+        <div className="flex-1" />
+
         <div className="hidden items-center gap-3 md:flex">
           <button
             type="button"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className={iconButtonClass}
+            className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-600 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d05] dark:text-gray-400 dark:hover:bg-gray-900"
           >
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
 
           <a
-            href={GITHUB_URL}
+            href="https://github.com/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className={iconButtonClass}
+            className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-600 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d05] dark:text-gray-400 dark:hover:bg-gray-900"
           >
             <FaGithub size={20} />
           </a>
@@ -128,13 +100,12 @@ const toggleTheme = () => {
           </button>
         </div>
 
-        {/* Right Mobile */}
         <div className="flex items-center gap-2 md:hidden">
           <button
             type="button"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className={iconButtonClass}
+            className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-600 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d05] dark:text-gray-400 dark:hover:bg-gray-900"
           >
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
@@ -142,8 +113,8 @@ const toggleTheme = () => {
           <button
             type="button"
             onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-            className={iconButtonClass}
+            aria-label="Mobile menu"
+            className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-600 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d05] dark:text-gray-400 dark:hover:bg-gray-900"
           >
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -151,17 +122,17 @@ const toggleTheme = () => {
       </Container>
 
       {isMobileMenuOpen && (
-        <div className="border-t border-gray-200 bg-white/80 shadow-sm backdrop-blur-md dark:border-gray-800 dark:bg-black/80 md:hidden">
+        <div className="border-t border-gray-200 bg-white/80 shadow-sm backdrop-blur-md transition-all duration-300 dark:border-gray-800 dark:bg-black/80 md:hidden">
           <Container className="flex flex-col gap-3 py-4">
             <a
-              href={GITHUB_URL}
+              href="https://github.com/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d05] dark:text-gray-400 dark:hover:bg-gray-900"
+              className="flex h-11 items-center gap-2 rounded-xl px-3 text-sm font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d05] dark:text-gray-400 dark:hover:bg-gray-900"
             >
               <FaGithub size={20} />
-              <span>GitHub</span>
+              GitHub
             </a>
 
             <button
