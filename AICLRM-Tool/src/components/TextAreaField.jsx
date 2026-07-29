@@ -20,7 +20,7 @@ function TextAreaField({
       <div className="flex items-center">
         <Label htmlFor={fieldId} className="mb-0">
           {label}
-          {required && <span className="ml-1 text-purple-500">*</span>}
+          {required && <span className="ml-1 text-accent">*</span>}
         </Label>
       </div>
 

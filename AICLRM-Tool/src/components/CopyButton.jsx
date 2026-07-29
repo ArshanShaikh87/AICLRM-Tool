@@ -18,10 +18,10 @@ function CopyButton({ text }) {
     <button
       type="button"
       onClick={handleCopy}
-      className="self-start rounded-md border border-gray-200 dark:border-gray-700
-                 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300
-                 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800
-                 focus:outline-none focus:ring-2 focus:ring-purple-400/40"
+      className="self-start rounded-md border border-border
+                 px-3 py-1.5 text-xs font-medium text-text
+                 transition-colors hover:bg-surface
+                 focus:outline-none focus:ring-2 focus:ring-accent/40"
     >
       {copied ? 'Copied ✓' : 'Copy'}
     </button>

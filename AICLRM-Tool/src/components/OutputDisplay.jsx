@@ -7,8 +7,8 @@ function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
   if (loading) {
     return (
       <Card className="w-full text-center">
-        <Spinner size="lg" className="mx-auto mb-3 text-purple-400" />
-        <p className="text-[15px] text-gray-500 dark:text-gray-400">
+        <Spinner size="lg" className="mx-auto mb-3 text-accent" />
+        <p className="text-[15px] text-text-soft">
           Generating cover letter...
         </p>
       </Card>
@@ -29,10 +29,10 @@ function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
     return (
       <Card className="w-full border-dashed p-10 text-center shadow-none">
         <p className="mb-2 text-2xl">✨</p>
-        <p className="text-[15px] font-medium text-gray-900 dark:text-gray-100">
+        <p className="text-[15px] font-medium text-text">
           Your generated cover letter will appear here.
         </p>
-        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+        <p className="mt-1 text-sm text-text-soft">
           Paste your resume and job description, then click Generate.
         </p>
       </Card>
@@ -47,7 +47,7 @@ function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
     <Card className="flex w-full flex-col gap-6 text-left">
       <section className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <h2 className="text-base font-medium text-gray-900 dark:text-gray-100">
+          <h2 className="text-base font-medium text-text">
             Generated Cover Letter
           </h2>
           <CopyButton text={coverLetter} />
@@ -58,7 +58,7 @@ function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
             <p
               // eslint-disable-next-line react/no-array-index-key
               key={index}
-              className="whitespace-pre-line text-[15px] leading-relaxed text-gray-700 dark:text-gray-300"
+              className="whitespace-pre-line text-[15px] leading-relaxed text-text"
             >
               {paragraph}
             </p>
@@ -67,15 +67,15 @@ function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
       </section>
 
       {missingKeywords && missingKeywords.length > 0 && (
-        <section className="flex flex-col gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-          <h2 className="text-base font-medium text-gray-900 dark:text-gray-100">
+        <section className="flex flex-col gap-2 border-t border-border pt-4">
+          <h2 className="text-base font-medium text-text">
             Missing Keywords
           </h2>
           <ul className="flex flex-col gap-1">
             {missingKeywords.map((keyword) => (
               <li
                 key={keyword}
-                className="text-[15px] text-gray-700 dark:text-gray-300"
+                className="text-[15px] text-text"
               >
                 • {keyword}
               </li>
