@@ -1,6 +1,6 @@
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
-import { useRouter } from '../../router/Router'
+import { useAppRouter } from '../../router/Router'
 
 const LINKS = [
   { label: 'About', to: '/about' },
@@ -8,7 +8,7 @@ const LINKS = [
 ]
 
 function Footer() {
-  const { navigate } = useRouter()
+  const { navigate } = useAppRouter()
   return (
     <footer className="border-t border-border bg-bg">
       <Container className="flex flex-col gap-8 py-12 sm:flex-row sm:items-start sm:justify-between">

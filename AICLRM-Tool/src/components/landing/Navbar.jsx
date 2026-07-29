@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useRouter } from '../../router/Router'
+import { useAppRouter } from '../../router/Router'
 import { PenLine, MoonStar, Menu, X } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
@@ -20,7 +20,7 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [theme, setTheme] = useState(getInitialTheme)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { path, navigate } = useRouter()
+ const { path, navigate } = useAppRouter()
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')

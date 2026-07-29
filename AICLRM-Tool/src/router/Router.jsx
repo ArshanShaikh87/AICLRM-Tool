@@ -1,8 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 
-const RouterContext = createContext(null)
+const AppRouterContext = createContext(null)
 
-export function RouterProvider({ children }) {
+export function AppRouterProvider({ children }) {
   const [path, setPath] = useState(window.location.pathname)
 
   useEffect(() => {
@@ -20,14 +20,14 @@ export function RouterProvider({ children }) {
   }, [])
 
   return (
-    <RouterContext.Provider value={{ path, navigate }}>
+    <AppRouterContext.Provider value={{ path, navigate }}>
       {children}
-    </RouterContext.Provider>
+    </AppRouterContext.Provider>
   )
 }
 
-export function useRouter() {
-  const ctx = useContext(RouterContext)
-  if (!ctx) throw new Error('useRouter must be used within RouterProvider')
+export function useAppRouter() {
+  const ctx = useContext(AppRouterContext)
+  if (!ctx) throw new Error('useAppRouter must be used within AppRouterProvider')
   return ctx
 }
