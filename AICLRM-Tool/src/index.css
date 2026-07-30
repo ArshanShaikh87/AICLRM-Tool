@@ -125,3 +125,29 @@ code {
   padding: 4px 8px;
   background: var(--surface);
 }
+
+/* Custom scrollbar for textareas — matches theme tokens instead of browser default */
+textarea {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 8px;
+  border: 2px solid var(--surface);
+  background-clip: padding-box;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-soft);
+  background-clip: padding-box;
+}
