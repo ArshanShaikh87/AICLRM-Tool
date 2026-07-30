@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import CharacterCounter from './CharacterCounter'
+import { RESUME_MAX_LENGTH } from '../constants/limits'
 import { Upload, FileText, Image as ImageIcon, X, Loader2, CheckCircle2, RefreshCw } from 'lucide-react'
 import {
   getFileKind,
@@ -133,6 +135,16 @@ function ResumeUpload({ resumeText, onTextExtracted, onImageExtracted, onClear }
             We&apos;ll read your resume directly from the image — no manual retyping needed.
           </p>
         )}
+        {fileMeta.kind !== 'image' && !parsing && (
+          <div className="flex items-center justify-between">
+            <CharacterCounter current={resumeText.length} max={RESUME_MAX_LENGTH} />
+            {resumeText.length > RESUME_MAX_LENGTH && (
+              <span className="text-xs font-medium text-red-500">
+                Too long — please shorten your resume
+              </span>
+            )}
+          </div>
+        )}
 
         {error && <p className="text-xs font-medium text-red-500">{error}</p>}
 
@@ -155,9 +167,8 @@ function ResumeUpload({ resumeText, onTextExtracted, onImageExtracted, onClear }
         }}
         onDragLeave={() => setDragActive(false)}
         onDrop={handleDrop}
-        className={`flex w-full cursor-pointer flex-col items-center gap-2.5 rounded-lg border-2 border-dashed p-8 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 ${
-          dragActive ? 'border-accent bg-accent/10' : 'border-border bg-bg hover:bg-surface'
-        }`}
+        className={`flex w-full cursor-pointer flex-col items-center gap-2.5 rounded-lg border-2 border-dashed p-8 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 ${dragActive ? 'border-accent bg-accent/10' : 'border-border bg-bg hover:bg-surface'
+          }`}
       >
         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/10 text-secondary dark:bg-accent/15 dark:text-accent">
           <Upload size={18} />
@@ -183,6 +194,13 @@ function ResumeUpload({ resumeText, onTextExtracted, onImageExtracted, onClear }
           placeholder="Paste your resume text here..."
           rows={8}
           className="mt-1 w-full resize-y rounded-lg border border-border bg-surface px-3.5 py-3 text-[15px] leading-relaxed text-text placeholder-text-soft transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:border-accent"
+        />
+      )}
+      {showPasteFallback && (
+        <CharacterCounter
+          current={resumeText.length}
+          max={RESUME_MAX_LENGTH}
+          className="self-end"
         />
       )}
 

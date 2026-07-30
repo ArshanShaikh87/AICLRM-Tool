@@ -1,4 +1,5 @@
-const MAX_LENGTH = 2500
+import { RESUME_MAX_LENGTH, JOB_DESCRIPTION_MAX_LENGTH } from '../../src/constants/limits.js'
+
 const MAX_IMAGE_BASE64_LENGTH = 6_000_000 // ~4.5MB decoded ceiling
 
 function isBlank(value) {
@@ -19,7 +20,7 @@ export function validateInput(payload) {
     return 'input_too_long'
   }
 
-  if (hasResumeText && resume.length > MAX_LENGTH) {
+  if (hasResumeText && resume.length > RESUME_MAX_LENGTH) {
     return 'input_too_long'
   }
 
@@ -27,7 +28,7 @@ export function validateInput(payload) {
     return 'job_description_required'
   }
 
-  if (jobDescription.length > MAX_LENGTH) {
+  if (jobDescription.length > JOB_DESCRIPTION_MAX_LENGTH) {
     return 'input_too_long'
   }
 

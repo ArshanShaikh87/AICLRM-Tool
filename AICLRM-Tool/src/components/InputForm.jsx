@@ -1,7 +1,8 @@
 import ResumeUpload from './ResumeUpload'
 import TextAreaField from './TextAreaField'
 import GenerateButton from './GenerateButton'
-
+import { RESUME_MAX_LENGTH } from '../constants/limits'
+import { JOB_DESCRIPTION_MAX_LENGTH } from '../constants/limits'
 function InputForm({
   resumeText,
   onResumeTextExtracted,
@@ -13,7 +14,11 @@ function InputForm({
   onGenerate,
   loading,
 }) {
-  const isDisabled = !hasResume || jobDescription.trim() === ''
+  const isDisabled =
+    !hasResume ||
+    jobDescription.trim() === '' ||
+    resumeText.length > RESUME_MAX_LENGTH ||
+    jobDescription.length > JOB_DESCRIPTION_MAX_LENGTH
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -39,7 +44,7 @@ function InputForm({
         placeholder="Paste the job description here..."
         value={jobDescription}
         onChange={(e) => setJobDescription(e.target.value)}
-        maxLength={2500}
+        maxLength={JOB_DESCRIPTION_MAX_LENGTH}
         required
       />
 

@@ -26,7 +26,10 @@ export async function extractTextFromPdf(file) {
     fullText += content.items.map((item) => item.str).join(' ') + '\n\n'
   }
 
-  return fullText.trim()
+  return fullText
+    .replace(/[ \t]{2,}/g, ' ')   // multiple spaces → single space
+    .replace(/\n{3,}/g, '\n\n')  // extra blank lines collapse
+    .trim()
 }
 
 export async function extractTextFromDocx(file) {

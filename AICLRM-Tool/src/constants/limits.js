@@ -1,0 +1,2 @@
+export const RESUME_MAX_LENGTH = 6000
+export const JOB_DESCRIPTION_MAX_LENGTH = 3000
