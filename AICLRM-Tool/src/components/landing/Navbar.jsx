@@ -150,7 +150,7 @@ function Navbar() {
             >
               Policies
             </a>
-            <a
+            {/* <a
               href="https://github.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -158,7 +158,7 @@ function Navbar() {
             >
               <FaGithub size={18} />
               View source on GitHub
-            </a>
+            </a> */}
             <Button variant="primary" onClick={scrollToGenerator} className="mt-1 w-full justify-center">
               Get Started
             </Button>
