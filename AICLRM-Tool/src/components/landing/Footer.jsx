@@ -1,6 +1,7 @@
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
 import { useAppRouter } from '../../router/Router'
+import Logo from '../Logo'
 
 const LINKS = [
   { label: 'About', to: '/about' },
@@ -14,8 +15,11 @@ function Footer() {
       <Container className="flex flex-col gap-8 py-12 sm:flex-row sm:items-start sm:justify-between">
         <div className="max-w-xs">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary font-heading text-xs font-bold text-secondary-text">
+            {/* <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary font-heading text-xs font-bold text-secondary-text">
               CL
+            </span> */}
+            <span className="flex h-9 w-9 items-center justify-center transition-transform duration-300 group-hover:-rotate-6">
+              <Logo />
             </span>
             <span className="font-heading text-sm font-semibold text-text">
               Cover<span className="text-accent">Letter</span>

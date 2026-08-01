@@ -4,7 +4,7 @@ import { PenLine, MoonStar, Menu, X } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
 import Button from '../Button'
-
+import Logo from '../Logo'
 
 function getInitialTheme() {
   const stored = localStorage.getItem('theme')
@@ -20,7 +20,7 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [theme, setTheme] = useState(getInitialTheme)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
- const { path, navigate } = useAppRouter()
+  const { path, navigate } = useAppRouter()
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
@@ -73,8 +73,11 @@ function Navbar() {
           onClick={scrollToTop}
           className="group flex items-center gap-2.5 focus-visible:outline-none"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-secondary font-heading text-sm font-bold text-secondary-text transition-transform duration-300 group-hover:-rotate-6">
+          {/* <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-secondary font-heading text-sm font-bold text-secondary-text transition-transform duration-300 group-hover:-rotate-6">
             CL
+          </span> */}
+          <span className="flex h-9 w-9 items-center justify-center transition-transform duration-300 group-hover:-rotate-6">
+            <Logo />
           </span>
           <span className="font-heading text-[15px] font-semibold tracking-tight text-text">
             Cover<span className="text-accent">Letter</span>
