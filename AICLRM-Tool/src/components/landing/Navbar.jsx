@@ -4,7 +4,7 @@ import { PenLine, MoonStar, Menu, X } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
 import Button from '../Button'
-import Logo from '../logo'
+import Logo from '../Logo'
 
 function getInitialTheme() {
   const stored = localStorage.getItem('theme')
