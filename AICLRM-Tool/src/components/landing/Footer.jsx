@@ -43,7 +43,7 @@ function Footer() {
               </a>
             ))}
           </nav>
-          <a
+          {/* <a
             href="https://github.com/"
             target="_blank"
             rel="noopener noreferrer"
@@ -51,7 +51,7 @@ function Footer() {
             className="flex h-9 w-9 items-center justify-center rounded-lg text-text-soft transition-colors hover:bg-surface hover:text-text"
           >
             <FaGithub size={17} />
-          </a>
+          </a> */}
         </div>
       </Container>
 

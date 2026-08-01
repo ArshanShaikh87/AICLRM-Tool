@@ -104,7 +104,7 @@ function Navbar() {
           </a>
           <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
 
-          <a
+          {/* <a
             href="https://github.com/"
             target="_blank"
             rel="noopener noreferrer"
@@ -112,7 +112,7 @@ function Navbar() {
             className="flex h-10 w-10 items-center justify-center rounded-lg text-text-soft transition-colors hover:bg-surface hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             <FaGithub size={18} />
-          </a>
+          </a> */}
 
           <Button variant="primary" onClick={scrollToGenerator} className="ml-1">
             Get Started
