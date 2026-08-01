@@ -8,8 +8,8 @@ const FONT_FAMILY = 'times'
 /**
  * Generates and downloads a cover letter as a formatted, selectable-text PDF.
  *
- * @param {string} coverLetterText — the full letter, paragraphs separated by \n\n
- * @param {string} [fileName] — without extension
+ * @param {string} coverLetterText   the full letter, paragraphs separated by \n\n
+ * @param {string} [fileName]   without extension
  */
 export function downloadCoverLetterAsPdf(coverLetterText, fileName = 'Cover_Letter') {
   const doc = new jsPDF({ unit: 'pt', format: 'a4' })

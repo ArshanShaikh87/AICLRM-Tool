@@ -10,7 +10,7 @@ function CopyButton({ text }) {
       setTimeout(() => setCopied(false), 2000)
     } catch {
       // Clipboard API can fail (permissions, insecure context, etc.)
-      // Fail silently — copy is a convenience, not a critical path.
+      // Fail silently   copy is a convenience, not a critical path.
     }
   }
 

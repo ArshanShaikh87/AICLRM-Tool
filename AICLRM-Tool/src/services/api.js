@@ -1,4 +1,4 @@
-// Single Source of Truth — backend endpoint is defined only here.
+// Single Source of Truth   backend endpoint is defined only here.
 // If the backend URL ever changes (different host, versioned path, etc.),
 // this is the only line that needs to change.
 const GENERATE_ENDPOINT = '/api/generate'
@@ -44,7 +44,7 @@ export async function generateCoverLetter({ resume, resumeImage, jobDescription 
 
   // Only documented fields are exposed to the caller. If the backend
   // starts sending additional metadata (usage, tokens, model, timings),
-  // it will be selectively added here — App.jsx will never see raw
+  // it will be selectively added here   App.jsx will never see raw
   // backend response shapes.
   return {
     coverLetter: data.coverLetter ?? '',

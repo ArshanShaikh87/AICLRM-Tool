@@ -3,7 +3,7 @@
  * (referencing a letter/page) holding the CL monogram.
  *
  * Pure SVG so it stays crisp at any size and uses only semantic
- * design tokens — no hardcoded colors.
+ * design tokens   no hardcoded colors.
  */
 function Logo({ className = '' }) {
   return (
@@ -20,7 +20,7 @@ function Logo({ className = '' }) {
         fill="var(--secondary)"
       />
 
-      {/* Folded flap — the "dog-ear" that makes the square read as paper */}
+      {/* Folded flap   the "dog-ear" that makes the square read as paper */}
       <path d="M28 0 L40 12 H32 A4 4 0 0 1 28 8 Z" fill="var(--secondary-text)" fillOpacity="0.22" />
       <path d="M28 0 L40 12 H28 Z" fill="var(--secondary-text)" fillOpacity="0.1" />
 

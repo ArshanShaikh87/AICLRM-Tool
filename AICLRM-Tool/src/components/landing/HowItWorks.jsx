@@ -4,7 +4,7 @@ const STEPS = [
   {
     n: '01',
     title: 'Paste your resume',
-    body: 'Once per session — it stays active while you try different roles.',
+    body: 'Once per session   it stays active while you try different roles.',
   },
   {
     n: '02',

@@ -8,7 +8,7 @@ const VALUES = [
   {
     icon: Target,
     title: 'Built for one problem',
-    body: 'Not a resume builder, not a job board, not a career platform. Just the one repetitive step everyone hates — writing a fresh cover letter for every application.',
+    body: 'Not a resume builder, not a job board, not a career platform. Just the one repetitive step everyone hates   writing a fresh cover letter for every application.',
   },
   {
     icon: ShieldCheck,
@@ -18,7 +18,7 @@ const VALUES = [
   {
     icon: Users,
     title: 'Made for the Indian job hunt',
-    body: 'Tone, structure, and phrasing are tuned for how recruiters in India actually read applications — not adapted from a US template.',
+    body: 'Tone, structure, and phrasing are tuned for how recruiters in India actually read applications   not adapted from a US template.',
   },
   {
     icon: Sparkles,
@@ -52,7 +52,7 @@ function About() {
 
           <p className="mt-4 text-[16px] leading-relaxed text-text-soft sm:text-[17px]">
             The idea here is simple: paste your resume once, paste the job description,
-            and get a genuinely tailored first draft — plus the keywords your resume is
+            and get a genuinely tailored first draft   plus the keywords your resume is
             missing before an ATS filters you out. No account, no template picker, no
             twenty-question onboarding form.
           </p>
@@ -95,7 +95,7 @@ function About() {
             </h2>
             <p className="text-sm leading-relaxed text-text-soft">
               This is built and maintained as an independent project, not by a large
-              company. It runs on a lightweight serverless backend with no database —
+              company. It runs on a lightweight serverless backend with no database  
               your data has nowhere to be stored even if we wanted to keep it. For
               details on exactly what happens to your information, see the{' '}
               <a href="/policies" className="text-secondary underline underline-offset-2 dark:text-accent">

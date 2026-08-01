@@ -17,7 +17,7 @@ function sendError(res, status, code) {
 
 /**
  * Maps a provider (Gemini today, others later) error into a canonical
- * error code. Private to this file — if more providers or statuses
+ * error code. Private to this file   if more providers or statuses
  * are added later, this is the only place that changes.
  */
 function mapProviderError(error) {
@@ -76,7 +76,7 @@ export default async function handler(req, res) {
       return sendError(res, 429, 'rate_limit_exceeded')
     }
   } catch {
-    // Redis itself unreachable — fail open (don't block real users
+    // Redis itself unreachable   fail open (don't block real users
     // because of an infra hiccup), but this should trigger monitoring
     // once Sentry/error tracking is wired up in Phase 3.
   }

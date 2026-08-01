@@ -12,7 +12,7 @@ function getClient() {
   const apiKey = process.env.GEMINI_API_KEY
 
   if (!apiKey) {
-    // Lazy check — evaluated on first call, not at module load time,
+    // Lazy check   evaluated on first call, not at module load time,
     // since env var availability isn't guaranteed at import time in
     // serverless environments.
     const error = new Error('Missing GEMINI_API_KEY environment variable.')
@@ -31,7 +31,7 @@ function getClient() {
  * Sends a prompt to Gemini and returns the generated text.
  *
  * SDK-specific errors are normalized into plain JavaScript Error
- * objects (with a best-effort `.status` hint) — callers never see
+ * objects (with a best-effort `.status` hint)   callers never see
  * Gemini SDK internals. No canonical error-code mapping happens here;
  * that responsibility belongs to the caller (generate.js).
  *

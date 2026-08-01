@@ -1,7 +1,7 @@
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
 import { useAppRouter } from '../../router/Router'
-import Logo from '../Logo'
+import Logo from '../logo'
 
 const LINKS = [
   { label: 'About', to: '/about' },

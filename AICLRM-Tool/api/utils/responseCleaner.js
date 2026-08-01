@@ -1,6 +1,6 @@
 /**
  * Cleans raw AI-generated text before validation/response.
- * Pure function — no side effects, no logging.
+ * Pure function   no side effects, no logging.
  *
  * @param {string} text
  * @returns {string}

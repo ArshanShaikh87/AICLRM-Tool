@@ -38,12 +38,12 @@ function Hero() {
 
         <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-text-soft sm:text-[17px]">
           Paste your resume once. Paste any job description. Get a tailored cover letter
-          and the exact keywords you&apos;re missing — in under thirty seconds.
+          and the exact keywords you&apos;re missing   in under thirty seconds.
         </p>
 
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
           <Button variant="primary" onClick={scrollToGenerator}>
-            Start writing — it&apos;s free
+            Start writing   it&apos;s free
             <ArrowRight size={17} />
           </Button>
           <button
@@ -87,7 +87,7 @@ function Hero() {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="inline-flex items-center gap-2 text-sm font-semibold text-text">
                 <FileText size={16} className="text-secondary dark:text-accent" />
-                Cover Letter — Draft
+                Cover Letter   Draft
               </span>
               <span className="inline-flex items-center gap-1 rounded-full bg-accent/15 px-2.5 py-1 text-xs font-semibold text-secondary dark:text-accent">
                 <CheckCircle2 size={13} />

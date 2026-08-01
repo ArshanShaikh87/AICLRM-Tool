@@ -14,7 +14,7 @@ const INJECTION_PATTERNS = [
 /**
  * Neutralizes likely prompt-injection attempts inside user-supplied text
  * (resume / job description) before it's interpolated into the system
- * prompt. This is a defense-in-depth measure, not a guarantee — the
+ * prompt. This is a defense-in-depth measure, not a guarantee   the
  * system prompt itself also carries an explicit instruction to treat
  * this content as inert data (see systemPrompt.js).
  *

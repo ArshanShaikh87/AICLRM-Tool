@@ -1,8 +1,8 @@
-# UI M0 — Design Planning
+# UI M0   Design Planning
 │
->Step 1 — Product Vision
+>Step 1   Product Vision
 UI M0
-Step 1 — Product Vision ✅
+Step 1   Product Vision ✅
 
 Design Direction:
 Professional SaaS + Premium Product
@@ -15,9 +15,9 @@ Core Values:
 • Elegant
 • Career-focused
 
-> Step 2 — User Personas
+> Step 2   User Personas
 UI M0
-Step 2 — User Personas ✅
+Step 2   User Personas ✅
 
 Primary Users
 -------------
@@ -37,9 +37,9 @@ Core UX Principles
 • Guided
 • Zero Learning Curve
 
-> Step 3 — User Journey
+> Step 3   User Journey
 UI M0
-Step 3 — User Journey ✅ LOCKED
+Step 3   User Journey ✅ LOCKED
 
 Journey
 
@@ -99,7 +99,7 @@ Resume Representation
   - Clear
 • The interaction pattern remains the same regardless of file type (PDF, DOCX, Image, etc.).
 
-> Step 4 — Information Architecture
+> Step 4   Information Architecture
 ┌──────────────────────────────────────┐
 │ Navbar                               │
 ├──────────────────────────────────────┤
@@ -120,7 +120,7 @@ Resume Representation
 │ Footer                               │
 └──────────────────────────────────────┘
 
-> Step 5 — Screen Inventory
+> Step 5   Screen Inventory
 UI M0 – Step 5
 
 Screen Inventory
@@ -138,7 +138,7 @@ Future (Not MVP)
 • Templates
 • Analytics
 
-> Step 6 — Component Inventory
+> Step 6   Component Inventory
 UI M0 – Step 6
 
 Reusable Components
@@ -167,7 +167,7 @@ Shared UI
 • Spinner
 • Badge
 
-> Step 7 — Design Language
+> Step 7   Design Language
 Style
 
 • Professional SaaS
@@ -208,9 +208,9 @@ Accessibility
 • Keyboard-first
 • WCAG-friendly
 
-# UI M1 — Design System
+# UI M1   Design System
 
-> Step 1 — Design Tokens
+> Step 1   Design Tokens
 UI M1 – Step 1
 
 Design Tokens
@@ -235,7 +235,7 @@ CSS Variables
 
 Tailwind Theme Mapping
 
->Step 2 — Theme System
+>Step 2   Theme System
 UI M1 – Step 2
 
 Theme System
@@ -280,7 +280,7 @@ Warning
 
 Error
 
->Step 3 — Typography System
+>Step 3   Typography System
 UI M1 – Step 3
 
 Typography
@@ -310,7 +310,7 @@ Rules
 • Limited reading width
 • Document-style output
 
->Step 4 — Layout & Grid
+>Step 4   Layout & Grid
 UI M1 – Step 4
 
 Layout
@@ -324,7 +324,7 @@ Layout
 • Sticky navbar only
 • Mobile-first responsive design
 
->Step 5 — Component Variants
+>Step 5   Component Variants
 UI M1 – Step 5
 
 Button
@@ -369,7 +369,7 @@ Loading
 • Spinner
 • Skeleton
 
->Step 6 — Icons & Illustrations
+>Step 6   Icons & Illustrations
 UI M1 – Step 6
 
 Icons
@@ -398,7 +398,7 @@ Illustrations
 • None in MVP
 • Icons + empty states only
 
->Step 7 — Motion System
+>Step 7   Motion System
 UI M1 – Step 7
 
 Motion Principles
@@ -420,7 +420,7 @@ Accessibility
 
 • Respect Reduced Motion
 
->Step 8 — Design Rules
+>Step 8   Design Rules
 UI M1 – Step 8
 
 Design Rules
@@ -438,9 +438,9 @@ Design Rules
 
 ↓
 
-# UI M2 — Landing Page
+# UI M2   Landing Page
 
->Step 1 — Landing Page Goals
+>Step 1   Landing Page Goals
 UI M2 – Step 1
 
 Landing Page Goals
@@ -457,7 +457,7 @@ Tool First
 
 Marketing Second
 
->Step 2 — Navbar
+>Step 2   Navbar
 UI M2 – Step 2
 
 Navbar
@@ -484,7 +484,7 @@ Mobile
 • Hamburger Menu
 • Theme Toggle
 
->Step 3 — Hero Section
+>Step 3   Hero Section
 UI M2 – Step 3
 
 Hero
@@ -517,7 +517,7 @@ Hero Rules
 • Maximum readability
 • Fast visual scanning
 
->Step 4 — Trust Section
+>Step 4   Trust Section
 UI M2 – Step 4
 
 Trust Section
@@ -542,7 +542,7 @@ Rules
 • Equal card layout
 • Minimal design
 
->Step 5 — Features Section
+>Step 5   Features Section
 UI M2 – Step 5
 
 Features Section
@@ -567,7 +567,7 @@ Rules
 • Minimal design
 • Accessible content
 
->Step 6 — How It Works
+>Step 6   How It Works
 UI M2 – Step 6
 
 How It Works
@@ -592,7 +592,7 @@ Rules
 • Minimal text
 • Responsive layout
 
->Step 7 — Call To Action
+>Step 7   Call To Action
 UI M2 – Step 7
 
 Final CTA
@@ -623,7 +623,7 @@ Rules
 • Responsive
 • Accessible
 
->Step 8 — Footer
+>Step 8   Footer
 UI M2 – Step 8
 
 Footer
@@ -650,7 +650,7 @@ Rules
 • Accessible
 • No unnecessary links
 
->Step 9 — Landing Page States
+>Step 9   Landing Page States
 UI M2 – Step 9
 
 Landing Page States
@@ -682,7 +682,7 @@ Rules
 • Automatic session restoration
 • Responsive across devices
 
->Step 10 — Final Landing Review
+>Step 10   Final Landing Review
 Landing Page
 
 ├── Sticky Navbar
@@ -703,9 +703,9 @@ Landing Page
 
 ↓
 
-# UI M3 — Generator Experience
+# UI M3   Generator Experience
 
->Step 1 — Generator Goals
+>Step 1   Generator Goals
 UI M3 – Step 1
 
 Generator Goals
@@ -727,7 +727,7 @@ Golden Rules
 • Never confuse the user.
 • Speed over decoration.
 
->Step 2 — Resume Upload Experience
+>Step 2   Resume Upload Experience
 UI M3 – Step 2
 
 Resume Upload Experience
@@ -761,7 +761,7 @@ Rules
 • Large clickable upload area
 • Accessible interaction
 
->Step 3 — Active Resume Card
+>Step 3   Active Resume Card
 UI M3 – Step 3
 
 Active Resume Card
@@ -790,7 +790,7 @@ Rules
 • Accessible actions
 • Professional appearance
 
->Step 4 — Job Description Editor
+>Step 4   Job Description Editor
 UI M3 – Step 4
 
 Job Description Editor
@@ -817,7 +817,7 @@ Rules
 • Accessible
 • Minimal UI
 
->Step 5 — Generate Button
+>Step 5   Generate Button
 UI M3 – Step 5
 
 Generate Button
@@ -843,7 +843,7 @@ Rules
 • Auto-scroll to output
 • Accessible
 
->Step 6 — Validation States
+>Step 6   Validation States
 UI M3 – Step 6
 
 Validation States
@@ -874,7 +874,7 @@ Rules
 • No technical messages
 • Accessible
 
->Step 7 — Generator Layout
+>Step 7   Generator Layout
 UI M3 – Step 7
 
 Generator Layout
@@ -901,7 +901,7 @@ Rules
 • Natural scrolling
 • Accessible tab order
 
->Step 8 — Session Experience
+>Step 8   Session Experience
 UI M3 – Step 8
 
 Session Experience
@@ -930,7 +930,7 @@ Rules
 • Graceful fallback if storage unavailable
 • Privacy-first behavior
 
->Step 9 — Empty / Error States
+>Step 9   Empty / Error States
 UI M3 – Step 9
 
 Empty & Error States
@@ -959,7 +959,7 @@ Rules
 • Smooth transitions
 • Accessible
 
->Step 10 — Mobile Experience
+>Step 10   Mobile Experience
 UI M3 – Step 10
 
 Mobile Experience
@@ -984,7 +984,7 @@ Rules
 • Safe-area aware
 • Performance-focused
 
->Step 11 — Generator Accessibility
+>Step 11   Generator Accessibility
 UI M3 – Step 11
 
 Generator Accessibility
@@ -1011,7 +1011,7 @@ Rules
 • Never use placeholder as the only label
 • Every interactive element must be reachable
 
->Step 12 — Final Generator Review
+>Step 12   Final Generator Review
 UI M3 – Generator Experience
 
 Status
@@ -1032,9 +1032,9 @@ Generator Experience is frozen and ready for implementation.
 
 ↓
 
-# UI M4 — Output Experience
+# UI M4   Output Experience
 
->Step 1 — Output Goals
+>Step 1   Output Goals
 UI M4 – Step 1
 
 Output Goals
@@ -1059,7 +1059,7 @@ Rules
 • No technical information.
 • Future-ready layout.
 
->Step 2 — Cover Letter Display
+>Step 2   Cover Letter Display
 UI M4 – Step 2
 
 Cover Letter Display
@@ -1083,7 +1083,7 @@ Rules
 • Print-ready structure
 • Accessible headings
 
->Step 3 — Output Actions
+>Step 3   Output Actions
 UI M4 – Step 3
 
 Output Actions
@@ -1107,7 +1107,7 @@ Rules
 • Mobile responsive
 • Future extensible
 
->Step 4 — Loading → Success Transition
+>Step 4   Loading → Success Transition
 UI M4 – Step 4
 
 Loading → Success Transition
@@ -1134,7 +1134,7 @@ Rules
 • Respect reduced motion
 • Accessible announcements
 
->Step 5 — Output States
+>Step 5   Output States
 UI M4 – Step 5
 
 Output States
@@ -1163,7 +1163,7 @@ Rules
 • Accessible announcements
 • Predictable transitions
 
->Step 6 — Future Scalability
+>Step 6   Future Scalability
 UI M4 – Step 6
 
 Future Scalability
@@ -1188,7 +1188,7 @@ Rules
 • Never mix analysis into the document itself.
 • Build modular components.
 
->Step 7 — Mobile Output
+>Step 7   Mobile Output
 UI M4 – Step 7
 
 Mobile Output
@@ -1212,7 +1212,7 @@ Rules
 • Safe-area aware
 • Performance-focused
 
->Step 8 — Output Accessibility
+>Step 8   Output Accessibility
 UI M4 – Step 8
 
 Output Accessibility
@@ -1239,7 +1239,7 @@ Rules
 • Never rely only on color.
 • Document remains selectable.
 
->Step 9 — Final Output Review
+>Step 9   Final Output Review
 UI M4 – Output Experience
 
 Status
@@ -1261,9 +1261,9 @@ Output Experience is frozen and ready for implementation.
 
 ↓
 
-# UI M5 — Advanced Interactions
+# UI M5   Advanced Interactions
 
->Step 1 — Interaction Goals
+>Step 1   Interaction Goals
 UI M5 – Step 1
 
 Interaction Goals
@@ -1298,7 +1298,7 @@ Rules
 • Animation supports usability, not decoration.
 
 
->Step 2 — Toast & Notification System
+>Step 2   Toast & Notification System
 UI M5 – Step 2
 
 Toast & Notification System
@@ -1323,7 +1323,7 @@ Rules
 • Screen-reader announcements
 • Respect reduced motion
 
->Step 3 — Modal & Dialog System
+>Step 3   Modal & Dialog System
 UI M5 – Step 3
 
 Modal & Dialog System
@@ -1347,7 +1347,7 @@ Rules
 • Support Escape key.
 • Keep dialogs concise.
 
->Step 4 — Keyboard Shortcuts
+>Step 4   Keyboard Shortcuts
 UI M5 – Step 4
 
 Keyboard Shortcuts
@@ -1369,7 +1369,7 @@ Rules
 • Preserve logical Tab order.
 • Keyboard shortcuts are optional enhancements.
 
->Step 5 — Micro-interactions & Animations
+>Step 5   Micro-interactions & Animations
 UI M5 – Step 5
 
 Micro-interactions & Animations
@@ -1397,7 +1397,7 @@ Rules
 • Prefer transform and opacity animations.
 • Never animate purely for decoration.
 
->Step 6 — Undo / Recovery UX
+>Step 6   Undo / Recovery UX
 UI M5 – Step 6
 
 Undo & Recovery UX
@@ -1423,7 +1423,7 @@ Rules
 • Keep critical errors visible until resolved.
 • Never lose work after temporary failures.
 
->Step 7 — Progressive Enhancement
+>Step 7   Progressive Enhancement
 UI M5 – Step 7
 
 Progressive Enhancement
@@ -1446,7 +1446,7 @@ Rules
 • Lazy-load optional modules.
 • Keep core functionality universally available.
 
->Step 8 — Final Advanced Interaction Review
+>Step 8   Final Advanced Interaction Review
 UI M5 – Advanced Interactions
 
 Status
@@ -1468,9 +1468,9 @@ Interaction layer is frozen and ready for implementation.
 
 ↓
 
-# UI M6 — Responsive Optimization
+# UI M6   Responsive Optimization
 
->Step 1 — Responsive Strategy
+>Step 1   Responsive Strategy
 UI M6 – Step 1
 
 Responsive Strategy
@@ -1493,7 +1493,7 @@ Rules
 • Prioritize readability and usability.
 • Every feature available across all devices.
 
->Step 2 — Layout Breakpoints
+>Step 2   Layout Breakpoints
 UI M6 – Step 2
 
 Layout Breakpoints
@@ -1520,7 +1520,7 @@ Rules
 • No horizontal scrolling
 • Preserve accessibility across breakpoints
 
->Step 3 — Navigation & Header
+>Step 3   Navigation & Header
 UI M6 – Step 3
 
 Navigation & Header
@@ -1539,7 +1539,7 @@ Rules
 • Future-ready layout
 • Accessible controls
 
->Step 4 — Forms & Inputs
+>Step 4   Forms & Inputs
 UI M6 – Step 4
 
 Forms & Inputs
@@ -1559,7 +1559,7 @@ Rules
 • Consistent input states
 • Accessibility-first design
 
->Step 5 — Output Responsiveness
+>Step 5   Output Responsiveness
 UI M6 – Step 5
 
 Output Responsiveness
@@ -1578,7 +1578,7 @@ Rules
 • Preserve accessibility
 • Future panels appear below the document
 
->Step 6 — Performance on Mobile
+>Step 6   Performance on Mobile
 UI M6 – Step 6
 
 Performance on Mobile
@@ -1599,7 +1599,7 @@ Rules
 • Minimize unnecessary re-renders
 • Accessibility remains intact
 
->Step 7 — Cross-device Testing Strategy
+>Step 7   Cross-device Testing Strategy
 UI M6 – Step 7
 
 Cross-device Testing Strategy
@@ -1617,7 +1617,7 @@ Rules
 • Include performance validation
 • Maintain a reusable regression checklist
 
->Step 8 — Final Responsive Review 
+>Step 8   Final Responsive Review 
 Consolidate every responsive design decision into a single, reusable architecture and confirm that the UI is ready for implementation.
 
 UI M6 – Responsive Optimization
@@ -1644,7 +1644,7 @@ A scalable, consistent, and implementation-ready responsive architecture.
 
 # UI Milestone 7 Accessibility & Final Polish
 
->Step 1 — Accessibility Strategy
+>Step 1   Accessibility Strategy
 UI M7 – Step 1
 
 Accessibility Strategy
@@ -1661,7 +1661,7 @@ Rules
 • Every reusable component defines accessibility behavior.
 • Inclusive design takes priority over implementation shortcuts.
 
->Step 2 — Keyboard Navigation
+>Step 2   Keyboard Navigation
 UI M7 – Step 2
 
 Keyboard Navigation
@@ -1681,7 +1681,7 @@ Rules
 • No keyboard traps
 • Future-ready navigation
 
->Step 3 — Screen Reader Support
+>Step 3   Screen Reader Support
 UI M7 – Step 3
 
 Screen Reader Support
@@ -1702,7 +1702,7 @@ Rules
 • Decorative elements ignored
 • Consistent support across future modules
 
->Step 4 — Visual Accessibility
+>Step 4   Visual Accessibility
 UI M7 – Step 4
 
 Visual Accessibility
@@ -1723,7 +1723,7 @@ Rules
 • Accessible forms
 • Consistent dark mode
 
->Step 5 — Motion & Animation Accessibility
+>Step 5   Motion & Animation Accessibility
 UI M7 – Step 5
 
 Motion & Animation Accessibility
@@ -1742,7 +1742,7 @@ Rules
 • No decorative continuous motion
 • Animations never block interaction
 
->Step 6 — Edge States & Error UX
+>Step 6   Edge States & Error UX
 UI M7 – Step 6
 
 Edge States & Error UX
@@ -1761,7 +1761,7 @@ Rules
 • Never expose internal errors
 • Consistent recovery patterns
 
->Step 7 — UI Consistency Audit
+>Step 7   UI Consistency Audit
 UI M7 – Step 7
 
 UI Consistency Audit
@@ -1781,7 +1781,7 @@ Rules
 • Consistent messaging
 • Documentation complete
 
->Step 8 — Final UI Architecture Review
+>Step 8   Final UI Architecture Review
 Frontend Architecture
 
 ├── UI M0

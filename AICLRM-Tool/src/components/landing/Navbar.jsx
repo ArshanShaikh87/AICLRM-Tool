@@ -4,7 +4,7 @@ import { PenLine, MoonStar, Menu, X } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import Container from './Container'
 import Button from '../Button'
-import Logo from '../Logo'
+import Logo from '../logo'
 
 function getInitialTheme() {
   const stored = localStorage.getItem('theme')
@@ -171,7 +171,7 @@ function Navbar() {
 
 /**
  * Replaces the generic Sun/Moon icon-button with a pill switch using
- * PenLine (light — writing) / MoonStar (dark). The sliding knob makes
+ * PenLine (light   writing) / MoonStar (dark). The sliding knob makes
  * state legible even without reading the icon.
  */
 function ThemeToggle({ isDark, onToggle }) {

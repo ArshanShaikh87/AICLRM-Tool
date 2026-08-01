@@ -4,7 +4,7 @@ import { Redis } from '@upstash/redis'
 let ratelimit = null
 
 /**
- * Lazily creates the rate limiter — same pattern as gemini.js's getClient(),
+ * Lazily creates the rate limiter   same pattern as gemini.js's getClient(),
  * env vars aren't guaranteed to be available at module load time.
  */
 function getRateLimiter() {
@@ -20,7 +20,7 @@ function getRateLimiter() {
 
     const redis = new Redis({ url, token })
 
-    // 5 requests per IP per 10 minutes — generous enough for real usage
+    // 5 requests per IP per 10 minutes   generous enough for real usage
     // (a user regenerating a few times), tight enough to block abuse.
     ratelimit = new Ratelimit({
       redis,

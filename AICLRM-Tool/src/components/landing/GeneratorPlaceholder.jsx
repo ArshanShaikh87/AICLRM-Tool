@@ -22,7 +22,7 @@ function GeneratorPlaceholder() {
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-[15px] text-text-soft">
             This is where you&apos;ll paste both and get a tailored letter back. We&apos;re
-            wiring it up — here&apos;s a preview of the workspace.
+            wiring it up   here&apos;s a preview of the workspace.
           </p>
         </div>
 

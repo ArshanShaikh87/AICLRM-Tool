@@ -132,7 +132,7 @@ function ResumeUpload({ resumeText, onTextExtracted, onImageExtracted, onClear }
 
         {fileMeta.kind === 'image' && !parsing && (
           <p className="text-xs text-text-soft">
-            We&apos;ll read your resume directly from the image — no manual retyping needed.
+            We&apos;ll read your resume directly from the image   no manual retyping needed.
           </p>
         )}
         {fileMeta.kind !== 'image' && !parsing && (
@@ -140,7 +140,7 @@ function ResumeUpload({ resumeText, onTextExtracted, onImageExtracted, onClear }
             <CharacterCounter current={resumeText.length} max={RESUME_MAX_LENGTH} />
             {resumeText.length > RESUME_MAX_LENGTH && (
               <span className="text-xs font-medium text-red-500">
-                Too long — please shorten your resume
+                Too long   please shorten your resume
               </span>
             )}
           </div>
@@ -153,7 +153,7 @@ function ResumeUpload({ resumeText, onTextExtracted, onImageExtracted, onClear }
     )
   }
 
-  // ── Empty state — dropzone ───────────────────────────────────────────
+  // ── Empty state   dropzone ───────────────────────────────────────────
   return (
     <div className="flex w-full flex-col gap-2">
       <div

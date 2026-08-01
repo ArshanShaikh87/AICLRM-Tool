@@ -6,7 +6,7 @@ const POINTS = [
   {
     icon: ShieldCheck,
     title: 'Nothing you paste is stored',
-    body: 'Your resume and job description live in your browser tab. Close it, and they are gone — no account, no database.',
+    body: 'Your resume and job description live in your browser tab. Close it, and they are gone   no account, no database.',
   },
   {
     icon: MessageSquare,
@@ -16,7 +16,7 @@ const POINTS = [
   {
     icon: Sparkles,
     title: 'Written for Indian hiring',
-    body: 'Tone, structure, and phrasing tuned for how recruiters in India actually read a cover letter — not a US-market export.',
+    body: 'Tone, structure, and phrasing tuned for how recruiters in India actually read a cover letter not a US-market export.',
   },
 ]
 

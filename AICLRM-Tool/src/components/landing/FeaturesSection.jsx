@@ -6,7 +6,7 @@ const FEATURES = [
   {
     icon: FileText,
     title: 'A full draft, not a snippet',
-    body: 'A 250–300 word cover letter, structured with a greeting, your strongest matches, and a close — ready to send.',
+    body: 'A 250–300 word cover letter, structured with a greeting, your strongest matches, and a close   ready to send.',
   },
   {
     icon: KeyRound,
@@ -16,7 +16,7 @@ const FEATURES = [
   {
     icon: Globe2,
     title: 'India-context tone',
-    body: 'Professional and warm, written for how it reads here — not translated from a US or UK template.',
+    body: 'Professional and warm, written for how it reads here   not translated from a US or UK template.',
   },
   {
     icon: ShieldCheck,

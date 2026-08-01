@@ -126,7 +126,7 @@ code {
   background: var(--surface);
 }
 
-/* Custom scrollbar for textareas — matches theme tokens instead of browser default */
+/* Custom scrollbar for textareas   matches theme tokens instead of browser default */
 textarea {
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;

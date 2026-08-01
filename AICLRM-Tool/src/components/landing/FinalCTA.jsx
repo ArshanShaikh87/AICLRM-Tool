@@ -13,7 +13,7 @@ function FinalCTA() {
           Your next application deserves more than a copy-paste letter.
         </h2>
         <p className="mt-4 max-w-md text-[15px] text-secondary-text/80">
-          Paste your resume and a job description above. The first draft is free —
+          Paste your resume and a job description above. The first draft is free  
           and it stays free.
         </p>
         <Button variant="primary" onClick={scrollToGenerator} className="mt-8">

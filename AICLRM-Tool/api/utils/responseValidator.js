@@ -17,7 +17,7 @@ const REFUSAL_PATTERNS = [
 /**
  * Decides whether a cleaned response is good enough to send to the user.
  *
- * @param {string} text — already passed through cleanResponseText
+ * @param {string} text   already passed through cleanResponseText
  * @returns {boolean}
  */
 export function isValidCoverLetter(text) {

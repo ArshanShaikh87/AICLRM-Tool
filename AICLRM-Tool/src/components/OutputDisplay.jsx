@@ -40,7 +40,7 @@ function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
     )
   }
 
-  // Split on blank lines so each paragraph renders as its own block —
+  // Split on blank lines so each paragraph renders as its own block  
   // more reliable across screen sizes than a single pre-wrap blob.
   const paragraphs = coverLetter.split(/\n{2,}/).filter(Boolean)
 

@@ -1,6 +1,6 @@
 # Implementation Phase
 
-# M1 — Project Scaffolding
+# M1   Project Scaffolding
 
 Step 1 Technology Stack
 
@@ -122,9 +122,9 @@ Rules
 
 
 
-# M2 — Design System Implementation
+# M2   Design System Implementation
 
->Step 1 — Design Tokens
+>Step 1   Design Tokens
 Implementation M2 – Step 1
 
 Design Tokens
@@ -141,7 +141,7 @@ Rules
 • Tokens flow into components, then pages.
 • One responsibility per token category.
 
->Step 2 — Theme System
+>Step 2   Theme System
 Implementation M2 – Step 2
 
 Theme System
@@ -159,7 +159,7 @@ Rules
 • No hardcoded colors.
 • Components remain theme-independent.
 
->Step 3 — Typography
+>Step 3   Typography
 Implementation M2 – Step 3
 
 Typography System
@@ -177,7 +177,7 @@ Rules
 • Components consume typography roles.
 • Accessibility-first typography.
 
->Step 4 — Spacing System
+>Step 4   Spacing System
 Implementation M2 – Step 4
 
 Spacing & Layout System
@@ -195,7 +195,7 @@ Rules
 • Responsive spacing.
 • Maximum readable content width.
 
->Step 5 — Color System
+>Step 5   Color System
 Implementation M2 – Step 5
 
 Color System
@@ -213,7 +213,7 @@ Rules
 • Separate branding from feedback colors.
 • Accessibility-first color usage.
 
->Step 6 — Shadows & Elevation
+>Step 6   Shadows & Elevation
 Implementation M2 – Step 6
 
 Shadows & Elevation
@@ -231,7 +231,7 @@ Rules
 • Hover may increase one level.
 • Components consume elevation tokens only.
 
->Step 7 — Motion Tokens
+>Step 7   Motion Tokens
 Implementation M2 – Step 7
 
 Motion & Animation Tokens
@@ -249,7 +249,7 @@ Rules
 • Support reduced motion.
 • Components consume shared motion tokens.
 
-Step 8 — Design System Review
+Step 8   Design System Review
 Implementation M2 – Final Review
 
 Design System
@@ -267,9 +267,9 @@ Rules
 • Accessible by default.
 • Future theme support.
 
-# M3 — Component Library
+# M3   Component Library
 
->Step 1 — Component Architecture
+>Step 1   Component Architecture
 Implementation M3 – Step 1
 
 Component Architecture
@@ -287,7 +287,7 @@ Rules
 • State owned by the appropriate parent.
 • Business logic stays in feature components.
 
->Step 2 — Base UI Components
+>Step 2   Base UI Components
 Implementation M3 – Step 2
 
 Base UI Components
@@ -305,7 +305,7 @@ Rules
 • Theme-driven styling.
 • Independently testable.
 
->Step 3 — Form Components
+>Step 3   Form Components
 Implementation M3 – Step 3
 
 Form Components
@@ -323,7 +323,7 @@ Rules
 • No business logic.
 • Parent owns state.
 
->Step 4 — Layout Components
+>Step 4   Layout Components
 Implementation M3 – Step 4
 
 Layout Components
@@ -341,7 +341,7 @@ Rules
 • Layout owns positioning only.
 • Components remain independent.
 
->Step 5 — Feedback Components
+>Step 5   Feedback Components
 Implementation M3 – Step 5
 
 Feedback Components
@@ -359,7 +359,7 @@ Rules
 • Accessible by default.
 • Reusable across features.
 
->Step 6 — Composite Components
+>Step 6   Composite Components
 Implementation M3 – Step 6
 
 Composite Components
@@ -377,7 +377,7 @@ Rules
 • Accessible composition.
 • Reusable across features.
 
->tep 7 — Component Documentation
+>tep 7   Component Documentation
 Implementation M3 – Step 7
 
 Component Documentation
@@ -395,7 +395,7 @@ Rules
 • Include Do/Don't guidance.
 • Keep docs synchronized with implementation.
 
->Step 8 — Final Component Review
+>Step 8   Final Component Review
 Implementation M3 – Final Review
 
 Component Library
@@ -413,8 +413,8 @@ Rules
 • Accessible components.
 • Design System compliance mandatory.
 
-# M4 — Page Assembly
->Step 1 — Page Architecture
+# M4   Page Assembly
+>Step 1   Page Architecture
 Implementation M4 – Step 1
 
 Page Architecture
@@ -432,7 +432,7 @@ Rules
 • Shared layout shell.
 • Routing-ready architecture.
 
->Step 2 — Home Page Assembly
+>Step 2   Home Page Assembly
 Implementation M4 – Step 2
 
 Home Page Assembly
@@ -450,7 +450,7 @@ Rules
 • Business logic stays below the page.
 • Accessibility-first structure.
 
->Step 3 — State Integration
+>Step 3   State Integration
 Implementation M4 – Step 3
 
 State Integration
@@ -468,7 +468,7 @@ Rules
 • One-way data flow.
 • Derived values are not stored.
 
->Step 4 — Responsive Assembly
+>Step 4   Responsive Assembly
 
 Implementation M4 – Step 4
 
@@ -488,7 +488,7 @@ Rules
 • Touch-friendly interactions.
 • Accessibility preserved.
 
->Step 5 —Navigation & Routing
+>Step 5  Navigation & Routing
 Implementation M4 – Step 5
 
 Navigation & Routing
@@ -507,7 +507,7 @@ Rules
 • Future-ready route structure.
 • Support lazy-loading.
 
->Step 6 — Accessibility Review
+>Step 6   Accessibility Review
 Implementation M4 – Step 6
 
 Accessibility Review
@@ -527,7 +527,7 @@ Rules
 • Reduced motion support.
 • Clear error recovery.
 
->Step 7 — Performance Review
+>Step 7   Performance Review
 Implementation M4 – Step 7
 
 Performance Review
@@ -546,7 +546,7 @@ Rules
 • Optimized assets.
 • Clear loading feedback.
 
->Step 8 — Final Page Review
+>Step 8   Final Page Review
 Implementation M4 – Final Review
 
 Status
@@ -562,9 +562,9 @@ Outcome
 • Performance expectations frozen.
 • Ready for implementation.
 
-# M5 — Implementation Sprint 1
+# M5   Implementation Sprint 1
 
->Step 1 — Project Preparation
+>Step 1   Project Preparation
 Implementation M5 – Step 1
 
 Project Preparation
@@ -583,7 +583,7 @@ Rules
 • Standardized error handling.
 • Git workflow defined.
 
->Step 2 — Base UI Components
+>Step 2   Base UI Components
 Step 2.1
 
 Button
@@ -644,7 +644,7 @@ GenerateButton  TextAreaField
 
 
 
->Step 3 — Form Components
+>Step 3   Form Components
 Step 3.1
 TextAreaField
       │
@@ -687,7 +687,7 @@ Checks:
 Result:
 Form Layer successfully migrated to Design System.
 
->Step 4 — Layout Components
+>Step 4   Layout Components
 
 4.1 Review current layout
 Step 4.1 – Layout Review
@@ -730,7 +730,7 @@ Status:
 COMPLETE (No code changes required)
 
 
->Step 5 — Feature Components
+>Step 5   Feature Components
 Step 5
 
 5.1
@@ -772,7 +772,7 @@ EmptyState
 5.4
 Feature Integration Review
 
->Step 6 — API Integration
+>Step 6   API Integration
 Step 6.1
 Frontend → Service Layer
 
@@ -800,7 +800,7 @@ Loading Flow
 
 Step 6.6
 Architecture Review
->Step 7 — Testing & Validation
+>Step 7   Testing & Validation
 Step 7
 
 Deferred
@@ -808,7 +808,7 @@ Deferred
 Reason:
 
 Final regression testing will be executed after all MVP UI features are implemented.
->Step 8 — Sprint Review
+>Step 8   Sprint Review
 Step 8
 
 Deferred
@@ -817,5 +817,5 @@ Reason:
 
 Sprint Review will be conducted after completion of the entire MVP UI implementation.
 
-# M6 — Testing & QA
-# M7 — Production Release
+# M6   Testing & QA
+# M7   Production Release

@@ -11,7 +11,7 @@ function DownloadPdfButton({ text, fileName = 'Cover_Letter' }) {
       setDownloaded(true)
       setTimeout(() => setDownloaded(false), 2000)
     } catch {
-      // PDF generation is a convenience feature — fail silently,
+      // PDF generation is a convenience feature   fail silently,
       // Copy remains the guaranteed fallback.
     }
   }
