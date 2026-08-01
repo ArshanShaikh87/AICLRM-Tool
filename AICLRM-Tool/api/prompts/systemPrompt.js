@@ -1,3 +1,5 @@
+import { sanitizeUserInput } from '../utils/promptSanitizer.js'
+
 /**
  * Builds the system prompt sent to the AI provider.
  *
@@ -8,6 +10,9 @@
  * @returns {string}
  */
 export function buildSystemPrompt({ resume, jobDescription, hasResumeImage }) {
+  const safeResume = hasResumeImage ? resume : sanitizeUserInput(resume)
+  const safeJobDescription = sanitizeUserInput(jobDescription)
+
   const resumeSection = hasResumeImage
     ? `===== RESUME =====\nThe candidate's resume is attached as an image. Read all text from it carefully — experience, skills, education, projects — and treat it exactly as resume text. Never mention that the resume was an image in your output.`
     : `===== RESUME =====\n${resume}`

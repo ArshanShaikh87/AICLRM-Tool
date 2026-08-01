@@ -3,9 +3,9 @@ import { buildSystemPrompt } from './prompts/systemPrompt.js'
 import { generateText } from './providers/gemini.js'
 import { cleanResponseText } from './utils/responseCleaner.js'
 import { isValidCoverLetter } from './utils/responseValidator.js'
-
+import { checkRateLimit } from './utils/rateLimiter.js'
 const ALLOWED_METHOD = 'POST'
-
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://yourdomain.com'
 /**
  * Sends a standardized error response.
  * Every error in this file goes through this single function so the
@@ -54,11 +54,37 @@ export const config = {
 
 
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN)
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end()
+  }
+
   if (req.method !== ALLOWED_METHOD) {
     return sendError(res, 405, 'method_not_allowed')
   }
 
-  const { resume, jobDescription } = req.body || {}
+  if (req.method !== ALLOWED_METHOD) {
+    return sendError(res, 405, 'method_not_allowed')
+  }
+  try {
+    const { success, remaining, reset } = await checkRateLimit(req)
+
+    res.setHeader('X-RateLimit-Remaining', remaining)
+    res.setHeader('X-RateLimit-Reset', reset)
+
+    if (!success) {
+      return sendError(res, 429, 'rate_limit_exceeded')
+    }
+  } catch {
+    // Redis itself unreachable — fail open (don't block real users
+    // because of an infra hiccup), but this should trigger monitoring
+    // once Sentry/error tracking is wired up in Phase 3.
+  }
+
+  const { resume, resumeImage, jobDescription } = req.body || {}
 
   const validationError = validateInput({ resume, jobDescription })
   if (validationError) {
