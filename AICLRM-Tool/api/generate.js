@@ -66,9 +66,6 @@ export default async function handler(req, res) {
     return sendError(res, 405, 'method_not_allowed')
   }
 
-  if (req.method !== ALLOWED_METHOD) {
-    return sendError(res, 405, 'method_not_allowed')
-  }
   try {
     const { success, remaining, reset } = await checkRateLimit(req)
 
@@ -86,17 +83,20 @@ export default async function handler(req, res) {
 
   const { resume, resumeImage, jobDescription } = req.body || {}
 
-  const validationError = validateInput({ resume, jobDescription })
+  //const validationError = validateInput({ resume, jobDescription })
+  const validationError = validateInput({ resume, resumeImage, jobDescription })
   if (validationError) {
     return sendError(res, 400, validationError)
   }
 
-  const prompt = buildSystemPrompt({ resume, jobDescription })
+  //const prompt = buildSystemPrompt({ resume, jobDescription })
+  const prompt = buildSystemPrompt({ resume, jobDescription, hasResumeImage: Boolean(resumeImage?.base64) })
 
   let rawCoverLetter
 
   try {
-    rawCoverLetter = await generateText(prompt)
+    //rawCoverLetter = await generateText(prompt)
+    rawCoverLetter = await generateText(prompt, resumeImage)
   } catch (err) {
     const errorCode = mapProviderError(err)
     const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
