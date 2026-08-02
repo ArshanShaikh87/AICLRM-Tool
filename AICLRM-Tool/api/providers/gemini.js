@@ -52,18 +52,42 @@ function getClient() {
 //     throw normalized
 //   }
 // }
-export async function generateText(promptText, image) {
+// export async function generateText(promptText, image) {
+//   const genAI = getClient()
+
+//   try {
+//     const model = genAI.getGenerativeModel({ model: MODEL_NAME })
+
+//     const parts = [{ text: promptText }]
+//     if (image?.base64) {
+//       parts.push({ inlineData: { data: image.base64, mimeType: image.mimeType } })
+//     }
+
+//     const result = await model.generateContent(parts)
+//     return result.response.text()
+//   } catch (err) {
+//     const normalized = new Error(err?.message || 'Gemini request failed.')
+//     normalized.status = err?.status ?? err?.response?.status ?? undefined
+//     normalized.cause = err
+//     throw normalized
+//   }
+// }
+
+export async function generateText(promptText, image, timeoutMs = 8000) {
   const genAI = getClient()
+  const model = genAI.getGenerativeModel({ model: MODEL_NAME })
+
+  const parts = [{ text: promptText }]
+  if (image?.base64) {
+    parts.push({ inlineData: { data: image.base64, mimeType: image.mimeType } })
+  }
+
+  const timeoutPromise = new Promise((_, reject) =>
+    setTimeout(() => reject(Object.assign(new Error('Gemini request timed out'), { status: 504 })), timeoutMs)
+  )
 
   try {
-    const model = genAI.getGenerativeModel({ model: MODEL_NAME })
-
-    const parts = [{ text: promptText }]
-    if (image?.base64) {
-      parts.push({ inlineData: { data: image.base64, mimeType: image.mimeType } })
-    }
-
-    const result = await model.generateContent(parts)
+    const result = await Promise.race([model.generateContent(parts), timeoutPromise])
     return result.response.text()
   } catch (err) {
     const normalized = new Error(err?.message || 'Gemini request failed.')
