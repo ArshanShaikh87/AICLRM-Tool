@@ -109,11 +109,15 @@ export default async function handler(req, res) {
   try {
     parsed = await callAndParse()
   } catch (err) {
+    console.error("Provider Error:", err);
+    console.error("Status:", err.status);
+    console.error("Message:", err.message);
     if (err.isParseError) {
       // JSON Reliability rule (dev notes #3): retry once on parse failure.
       try {
         parsed = await callAndParse()
       } catch (retryErr) {
+        console.error("Retry Error:", retryErr);
         if (retryErr.isParseError) {
           return sendError(res, 500, 'generation_failed')
         }
