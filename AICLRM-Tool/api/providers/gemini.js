@@ -73,7 +73,7 @@ function getClient() {
 //   }
 // }
 
-export async function generateText(promptText, image, timeoutMs = 30000) {
+export async function generateText(promptText, image, timeoutMs = 8000) {
   const genAI = getClient()
   const model = genAI.getGenerativeModel({
     model: MODEL_NAME,
