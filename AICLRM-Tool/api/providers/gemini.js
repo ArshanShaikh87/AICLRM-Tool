@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 // Single Source of Truth for the model name.
 //const MODEL_NAME = 'gemini-1.5-flash'
 const MODEL_NAME =
-  process.env.GEMINI_MODEL || 'gemini-1.5-flash'
+  process.env.GEMINI_MODEL || 'gemini-3.6-flash'
 
 let client = null
 
