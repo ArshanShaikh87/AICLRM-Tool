@@ -1,4 +1,4 @@
-# AI Cover Letter & Resume Match Tool — Project Architecture
+# AI Cover Letter & Resume Match Tool   Project Architecture
 
 **Version:** 1.0 (MVP)
 **Owner:** [Arshan Munir Shaikh]
@@ -10,20 +10,20 @@
 
 Job seekers (freshers, early-career professionals) repeatedly write tailored cover letters for every job application. This is repetitive, time-consuming, and most people either reuse generic templates or spend excessive time manually tailoring content to each job description.
 
-## 2. Product Scope (MVP — V1)
+## 2. Product Scope (MVP   V1)
 
 ### What it does
 - User pastes their **resume text** and a **job description**.
 - Tool generates:
   1. A tailored **cover letter** (250–300 words, professional tone, India-context aware)
-  2. A **keyword gap analysis** — skills/terms present in the JD but missing/underemphasized in the resume
+  2. A **keyword gap analysis**   skills/terms present in the JD but missing/underemphasized in the resume
 
 ### Explicitly OUT of scope for V1
 - No login/authentication
 - No database / persistent storage
 - No payment integration
 - No history of past generations
-- No file upload (PDF/DOCX parsing) — text paste only
+- No file upload (PDF/DOCX parsing)   text paste only
 
 > Rule: Do not add anything to this list until V1 is validated with real users.
 
@@ -86,7 +86,7 @@ Job seekers (freshers, early-career professionals) repeatedly write tailored cov
 | No login | Removes auth complexity; lowers friction for first-time users |
 | Serverless function (not a full backend server) | No server to manage/scale; free tier covers early usage |
 | Haiku 4.5 model (not Sonnet/Opus) | ~3–5x cheaper; sufficient quality for this task |
-| Stateless design | Every request is independent — simpler to debug, scale, and reason about |
+| Stateless design | Every request is independent   simpler to debug, scale, and reason about |
 
 ---
 
@@ -138,7 +138,7 @@ Job seekers (freshers, early-career professionals) repeatedly write tailored cov
 
 ---
 
-## 6. Prompt Design (System Prompt — fixed, backend-only)
+## 6. Prompt Design (System Prompt   fixed, backend-only)
 
 ```
 You are an expert career coach who writes cover letters for job
@@ -154,7 +154,7 @@ Respond ONLY in valid JSON with keys "coverLetter" and
 "missingKeywords" (array of strings). No preamble, no markdown.
 ```
 
-User message = raw resume + JD text only. No user-side prompt engineering needed — this is the tool's core differentiation vs. directly using ChatGPT/Claude.
+User message = raw resume + JD text only. No user-side prompt engineering needed   this is the tool's core differentiation vs. directly using ChatGPT/Claude.
 
 ---
 
@@ -221,7 +221,7 @@ cover-letter-tool/
 
 ## 11. Roadmap (post-validation only)
 
-- V2: Save history (requires DB — introduce only if users ask for it)
+- V2: Save history (requires DB   introduce only if users ask for it)
 - V3: Freemium tier (Razorpay integration, usage limits)
 - V4: Resume file upload (PDF parsing)
 - V5: ATS-compatibility score
@@ -232,4 +232,4 @@ cover-letter-tool/
 
 - API cost scaling if traffic spikes unexpectedly (mitigated via rate limiting)
 - Output quality consistency across varied resume formats (monitor via manual review of first 50 outputs)
-- Differentiation vs. directly using ChatGPT/Claude — must keep reinforcing via structured output (keyword gaps), not just convenience
+- Differentiation vs. directly using ChatGPT/Claude   must keep reinforcing via structured output (keyword gaps), not just convenience
