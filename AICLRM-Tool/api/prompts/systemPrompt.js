@@ -62,12 +62,26 @@ FINAL SELF-CHECK (perform internally before producing the output):
 - Professional grammar
 Only after this check, produce the final cover letter.
 
-OUTPUT FORMAT RULES:
-- Return only the final cover letter text.
-- Do not include explanations, notes, or commentary.
-- Do not use markdown formatting.
-- Do not add section headings or titles.
-- Do not wrap the answer in quotes.
+KEYWORD ANALYSIS:
+After writing the cover letter, identify 3-5 important keywords or skills that
+appear in the job description but are missing or underemphasized in the resume.
+- Return each keyword exactly as it appears in the job description (same casing,
+  same wording) so it can be matched reliably.
+- Only include real gaps. If the resume already covers a term well, do not list it.
+- If there are fewer than 3 genuine gaps, return fewer   never invent gaps to
+  reach a quota.
+
+OUTPUT FORMAT RULES   CRITICAL:
+Respond with ONLY a single valid JSON object. No markdown, no code fences
+(no \`\`\`), no explanations, no text before or after the JSON.
+
+The JSON object must have exactly these two keys:
+{
+  "coverLetter": "the full cover letter as a single string, paragraphs separated by \\n\\n",
+  "missingKeywords": ["keyword1", "keyword2", "..."]
+}
+
+Do not wrap coverLetter in quotes within itself. Do not add extra keys.
 
 ===== RESUME =====
 ${safeResume}
