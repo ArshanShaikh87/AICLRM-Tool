@@ -1,6 +1,7 @@
 import { validateInput } from './utils/validator.js'
 import { buildSystemPrompt } from './prompts/systemPrompt.js'
 import { generateText } from './providers/gemini.js'
+import { parseAiResponse } from './utils/responseParser.js'
 import { cleanResponseText } from './utils/responseCleaner.js'
 import { isValidCoverLetter } from './utils/responseValidator.js'
 import { checkRateLimit } from './utils/rateLimiter.js'
@@ -92,18 +93,42 @@ export default async function handler(req, res) {
   //const prompt = buildSystemPrompt({ resume, jobDescription })
   const prompt = buildSystemPrompt({ resume, jobDescription, hasResumeImage: Boolean(resumeImage?.base64) })
 
-  let rawCoverLetter
-
-  try {
-    //rawCoverLetter = await generateText(prompt)
-    rawCoverLetter = await generateText(prompt, resumeImage)
-  } catch (err) {
-    const errorCode = mapProviderError(err)
-    const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
-    return sendError(res, status, errorCode)
+  /**
+   * Calls Gemini and parses the JSON response.
+   * Any structural JSON problem throws a ParseError (from responseParser.js);
+   * any network/API problem throws a provider error (has .status).
+   * Kept as its own function so the retry logic below stays simple.
+   */
+  async function callAndParse() {
+    const raw = await generateText(prompt, resumeImage)
+    return parseAiResponse(raw)
   }
 
-  const coverLetter = cleanResponseText(rawCoverLetter)
+  let parsed
+
+  try {
+    parsed = await callAndParse()
+  } catch (err) {
+    if (err.isParseError) {
+      // JSON Reliability rule (dev notes #3): retry once on parse failure.
+      try {
+        parsed = await callAndParse()
+      } catch (retryErr) {
+        if (retryErr.isParseError) {
+          return sendError(res, 500, 'generation_failed')
+        }
+        const errorCode = mapProviderError(retryErr)
+        const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
+        return sendError(res, status, errorCode)
+      }
+    } else {
+      const errorCode = mapProviderError(err)
+      const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
+      return sendError(res, status, errorCode)
+    }
+  }
+
+  const coverLetter = cleanResponseText(parsed.coverLetter)
 
   if (!isValidCoverLetter(coverLetter)) {
     return sendError(res, 500, 'low_quality_output')
@@ -112,7 +137,7 @@ export default async function handler(req, res) {
   return res.status(200).json(
     buildResponse({
       coverLetter,
-      missingKeywords: [],
+      missingKeywords: parsed.missingKeywords,
     })
   )
 }
