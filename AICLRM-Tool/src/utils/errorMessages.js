@@ -8,6 +8,7 @@ export const ERROR_MESSAGES = {
   low_quality_output: 'Unable to generate a high-quality cover letter. Please try again.',
   generation_failed: 'Something went wrong while generating your cover letter. Please try again.',
   method_not_allowed: 'Something went wrong. Please refresh and try again.',
+  origin_not_allowed: 'Something went wrong. Please refresh and try again.',
 }
 
 export function getErrorMessage(code) {

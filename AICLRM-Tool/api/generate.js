@@ -6,7 +6,26 @@ import { cleanResponseText } from './utils/responseCleaner.js'
 import { isValidCoverLetter } from './utils/responseValidator.js'
 import { checkRateLimit } from './utils/rateLimiter.js'
 const ALLOWED_METHOD = 'POST'
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://yourdomain.com'
+
+//const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://yourdomain.com'
+// Comma-separated list in .env, e.g.:
+// ALLOWED_ORIGIN=https://aiclrm.vercel.app,https://aiclrm-tool.vercel.app
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGIN || '')
+  .split(',')
+  .map((o) => o.trim())
+  .filter(Boolean)
+
+/**
+ * Returns the origin to echo back in Access-Control-Allow-Origin, or
+ * null if the request's origin isn't on the allowlist. Vercel preview
+ * deployments get unique subdomains every time, so a single hardcoded
+ * origin breaks CORS on every preview build   this checks against a
+ * list instead of one fixed string.
+ */
+function resolveAllowedOrigin(requestOrigin) {
+  if (!requestOrigin) return null
+  return ALLOWED_ORIGINS.includes(requestOrigin) ? requestOrigin : null
+}
 /**
  * Sends a standardized error response.
  * Every error in this file goes through this single function so the
@@ -55,12 +74,25 @@ export const config = {
 
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN)
+  const requestOrigin = req.headers.origin
+  const allowedOrigin = resolveAllowedOrigin(requestOrigin)
+
+  if (allowedOrigin) {
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigin)
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Vary', 'Origin') // caches must not serve one origin's CORS headers to another
 
   if (req.method === 'OPTIONS') {
     return res.status(204).end()
+  }
+
+  // If the origin exists but isn't allowed, block outright instead of
+  // silently omitting the header (browser would block it anyway, but
+  // this gives a clear, logged reason rather than a vague CORS failure).
+  if (requestOrigin && !allowedOrigin) {
+    return sendError(res, 403, 'origin_not_allowed')
   }
 
   if (req.method !== ALLOWED_METHOD) {
