@@ -116,10 +116,22 @@ const DEFAULT_TIMEOUT_MS = 8500
 
 export async function generateText(promptText, image, timeoutMs = DEFAULT_TIMEOUT_MS) {
   const genAI = getClient()
-  const model = genAI.getGenerativeModel({
+const model = genAI.getGenerativeModel({
     model: MODEL_NAME,
     generationConfig: {
       responseMimeType: 'application/json',
+      // gemini-3.6-flash defaults to MEDIUM thinking, which was the
+      // actual cause of our 6-8.5s timeouts (thinking tokens generated
+      // before the answer). LOW keeps enough reasoning for a cover
+      // letter + keyword task while cutting latency significantly.
+      // NOTE: @google/generative-ai (this SDK) predates gemini-3.6-flash's
+      // release, so this field isn't in its official types   but the SDK
+      // passes generationConfig straight through as JSON, so it should
+      // still reach the API. If timeouts persist, this is the first
+      // thing to verify (see debug logs in generate.js).
+      thinkingConfig: {
+        thinkingLevel: 'LOW',
+      },
     },
   })
 
