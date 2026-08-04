@@ -95,6 +95,7 @@ function GeneratorSection() {
               missingKeywords={missingKeywords}
               loading={loading}
               error={error}
+              onRetry={handleGenerate}
             />
           </div>
         )}

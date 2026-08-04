@@ -4,7 +4,7 @@ import CopyButton from './CopyButton'
 import DownloadPdfButton from './DownloadPdfButton'
 import { getErrorMessage } from '../utils/errorMessages'
 
-function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
+function OutputDisplay({ coverLetter, missingKeywords, loading, error, onRetry }) {
   if (loading) {
     return (
       <Card className="w-full text-center">
@@ -22,6 +22,18 @@ function OutputDisplay({ coverLetter, missingKeywords, loading, error }) {
         <p className="text-[15px] font-medium text-red-600 dark:text-red-400">
           {getErrorMessage(error)}
         </p>
+        {onRetry && (
+          <button
+            type="button"
+            onClick={onRetry}
+            className="mt-3 inline-flex items-center rounded-md border border-red-300 dark:border-red-800
+                       px-3 py-1.5 text-xs font-medium text-red-600 dark:text-red-400
+                       transition-colors hover:bg-red-100 dark:hover:bg-red-950/50
+                       focus:outline-none focus:ring-2 focus:ring-red-400/40"
+          >
+            Try again
+          </button>
+        )}
       </div>
     )
   }

@@ -104,7 +104,15 @@ function getClient() {
 // Kept under Vercel free-tier's 10s function timeout with room for one
 // retry on transient (non-timeout) failures. See rateLimiter.js pattern
 // for the "tuned for free tier" philosophy   this mirrors it.
-const DEFAULT_TIMEOUT_MS = 6000
+
+// Vercel free tier hard-caps functions at 10s total. Real Gemini latency
+// for this prompt (resume/JD + JSON mode) has been observed exceeding 6s,
+// so this leaves ~1.5s of buffer for rate-limiting/validation/parsing
+// overhead while staying under the platform limit. No retry happens on
+// timeout (see generate.js)   a second 8.5s attempt would blow the
+// budget outright, so a single well-sized attempt is the only lever here
+// on the free tier.
+const DEFAULT_TIMEOUT_MS = 8500
 
 export async function generateText(promptText, image, timeoutMs = DEFAULT_TIMEOUT_MS) {
   const genAI = getClient()
