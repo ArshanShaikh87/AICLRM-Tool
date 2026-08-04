@@ -131,34 +131,80 @@ export default async function handler(req, res) {
    * any network/API problem throws a provider error (has .status).
    * Kept as its own function so the retry logic below stays simple.
    */
+  // async function callAndParse() {
+  //   const raw = await generateText(prompt, resumeImage)
+  //   return parseAiResponse(raw)
+  // }
+
+  // let parsed
+
+  // try {
+  //   parsed = await callAndParse()
+  // } catch (err) {
+  //   console.error("Provider Error:", err);
+  //   console.error("Status:", err.status);
+  //   console.error("Message:", err.message);
+  //   if (err.isParseError) {
+  //     // JSON Reliability rule (dev notes #3): retry once on parse failure.
+  //     try {
+  //       parsed = await callAndParse()
+  //     } catch (retryErr) {
+  //       console.error("Retry Error:", retryErr);
+  //       if (retryErr.isParseError) {
+  //         return sendError(res, 500, 'generation_failed')
+  //       }
+  //       const errorCode = mapProviderError(retryErr)
+  //       const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
+  //       return sendError(res, status, errorCode)
+  //     }
+  //   } else {
+  //     const errorCode = mapProviderError(err)
+  //     const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
+  //     return sendError(res, status, errorCode)
+  //   }
+  // }
+
+  /**
+   * Calls Gemini and parses the JSON response.
+   * Any structural JSON problem throws a ParseError (from responseParser.js);
+   * any network/API problem throws a provider error (has .status/.isTimeout).
+   * Kept as its own function so the retry logic below stays simple.
+   */
   async function callAndParse() {
     const raw = await generateText(prompt, resumeImage)
     return parseAiResponse(raw)
   }
 
+  /**
+   * Free-tier retry policy (Vercel 10s function budget, Gemini timeout
+   * tuned to 6s   see gemini.js):
+   *   - Parse failures (bad JSON): always worth one retry, same latency.
+   *   - Timeouts: NEVER retried here. Gemini was already slow once;
+   *     retrying burns another ~6s and risks a 504 from Vercel itself
+   *     before our own retry even finishes.
+   *   - Other transient errors (network blips, connection resets): one
+   *     retry, since a fresh attempt is often fast.
+   */
   let parsed
 
   try {
     parsed = await callAndParse()
   } catch (err) {
-    console.error("Provider Error:", err);
-    console.error("Status:", err.status);
-    console.error("Message:", err.message);
-    if (err.isParseError) {
-      // JSON Reliability rule (dev notes #3): retry once on parse failure.
-      try {
-        parsed = await callAndParse()
-      } catch (retryErr) {
-        console.error("Retry Error:", retryErr);
-        if (retryErr.isParseError) {
-          return sendError(res, 500, 'generation_failed')
-        }
-        const errorCode = mapProviderError(retryErr)
-        const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
-        return sendError(res, status, errorCode)
+    const shouldRetry = err.isParseError || !err.isTimeout
+
+    if (!shouldRetry) {
+      // Timeout on the first attempt   fail fast, don't risk the function
+      // budget on a second slow call.
+      return sendError(res, 500, 'generation_failed')
+    }
+
+    try {
+      parsed = await callAndParse()
+    } catch (retryErr) {
+      if (retryErr.isParseError) {
+        return sendError(res, 500, 'generation_failed')
       }
-    } else {
-      const errorCode = mapProviderError(err)
+      const errorCode = mapProviderError(retryErr)
       const status = errorCode === 'rate_limit_exceeded' ? 429 : 500
       return sendError(res, status, errorCode)
     }
