@@ -190,17 +190,31 @@ export default async function handler(req, res) {
   try {
     parsed = await callAndParse()
   } catch (err) {
+    // TEMP DEBUG   remove once root cause confirmed.
+    console.error('[generate] first attempt failed:', {
+      message: err.message,
+      status: err.status,
+      isTimeout: err.isTimeout,
+      isParseError: err.isParseError,
+    })
+
     const shouldRetry = err.isParseError || !err.isTimeout
 
     if (!shouldRetry) {
-      // Timeout on the first attempt   fail fast, don't risk the function
-      // budget on a second slow call.
       return sendError(res, 500, 'generation_failed')
     }
 
     try {
       parsed = await callAndParse()
     } catch (retryErr) {
+      // TEMP DEBUG   remove once root cause confirmed.
+      console.error('[generate] retry also failed:', {
+        message: retryErr.message,
+        status: retryErr.status,
+        isTimeout: retryErr.isTimeout,
+        isParseError: retryErr.isParseError,
+      })
+
       if (retryErr.isParseError) {
         return sendError(res, 500, 'generation_failed')
       }
