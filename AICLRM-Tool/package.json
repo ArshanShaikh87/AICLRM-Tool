@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@sentry/node": "^10.69.0",
+    "@sentry/react": "^10.69.0",
     "@tailwindcss/vite": "^4.3.3",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.38.1",

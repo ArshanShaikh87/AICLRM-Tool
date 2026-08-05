@@ -58,3 +58,5 @@ Payment gateway (Razorpay)   jab tak users ki demand na dikhe
 Multiple AI providers actually switch karna live   sirf architecture ready rakho
 100% test coverage obsession   critical paths kaafi hain abhi
 PWA / offline mode   nice-to-have hai, priority nahi
+
+# Sentry → UptimeRobot → RUNBOOK.md 

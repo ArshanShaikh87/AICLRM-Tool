@@ -5,6 +5,9 @@ import { parseAiResponse } from './utils/responseParser.js'
 import { cleanResponseText } from './utils/responseCleaner.js'
 import { isValidCoverLetter } from './utils/responseValidator.js'
 import { checkRateLimit } from './utils/rateLimiter.js'
+import { initSentry, Sentry } from './utils/sentry.js'
+
+initSentry()
 const ALLOWED_METHOD = 'POST'
 
 //const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://yourdomain.com'
@@ -98,8 +101,8 @@ export default async function handler(req, res) {
   if (req.method !== ALLOWED_METHOD) {
     return sendError(res, 405, 'method_not_allowed')
   }
-
-  try {
+  
+try {
     const { success, remaining, reset } = await checkRateLimit(req)
 
     res.setHeader('X-RateLimit-Remaining', remaining)
@@ -108,10 +111,10 @@ export default async function handler(req, res) {
     if (!success) {
       return sendError(res, 429, 'rate_limit_exceeded')
     }
-  } catch {
+  } catch (err) {
     // Redis itself unreachable   fail open (don't block real users
-    // because of an infra hiccup), but this should trigger monitoring
-    // once Sentry/error tracking is wired up in Phase 3.
+    // because of an infra hiccup), but now visible in Sentry.
+    Sentry.captureException(err)
   }
 
   const { resume, resumeImage, jobDescription } = req.body || {}
@@ -185,21 +188,22 @@ export default async function handler(req, res) {
    *   - Other transient errors (network blips, connection resets): one
    *     retry, since a fresh attempt is often fast.
    */
-  let parsed
+let parsed
 
   try {
     parsed = await callAndParse()
   } catch (err) {
-
     const shouldRetry = err.isParseError || !err.isTimeout
 
     if (!shouldRetry) {
+      Sentry.captureException(err)
       return sendError(res, 500, 'generation_failed')
     }
 
     try {
       parsed = await callAndParse()
     } catch (retryErr) {
+      Sentry.captureException(retryErr)
 
       if (retryErr.isParseError) {
         return sendError(res, 500, 'generation_failed')
