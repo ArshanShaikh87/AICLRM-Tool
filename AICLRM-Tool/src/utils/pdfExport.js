@@ -1,17 +1,31 @@
-import jsPDF from 'jspdf'
-
 const PAGE_MARGIN = 56 // ~0.75in in pt, jsPDF default unit is pt
 const FONT_SIZE = 11
 const LINE_HEIGHT = 16
 const FONT_FAMILY = 'times'
+
+let jsPDFPromise = null
+
+/**
+ * Lazily loads jsPDF (and its own optional deps: canvg, html2canvas) only
+ * when the user actually clicks "Download PDF"   see docs/Do_and_Dont.md
+ * Phase 5. Cached so repeated downloads in the same session don't refetch.
+ */
+function loadJsPDF() {
+  if (!jsPDFPromise) {
+    jsPDFPromise = import('jspdf').then((mod) => mod.default)
+  }
+  return jsPDFPromise
+}
 
 /**
  * Generates and downloads a cover letter as a formatted, selectable-text PDF.
  *
  * @param {string} coverLetterText   the full letter, paragraphs separated by \n\n
  * @param {string} [fileName]   without extension
+ * @returns {Promise<void>}
  */
-export function downloadCoverLetterAsPdf(coverLetterText, fileName = 'Cover_Letter') {
+export async function downloadCoverLetterAsPdf(coverLetterText, fileName = 'Cover_Letter') {
+  const jsPDF = await loadJsPDF()
   const doc = new jsPDF({ unit: 'pt', format: 'a4' })
 
   const pageWidth = doc.internal.pageSize.getWidth()

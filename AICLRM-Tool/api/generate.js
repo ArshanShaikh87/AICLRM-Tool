@@ -1,6 +1,7 @@
 import { validateInput } from './utils/validator.js'
 import { buildSystemPrompt } from './prompts/systemPrompt.js'
-import { generateText } from './providers/gemini.js'
+// import { generateText } from './providers/gemini.js'
+import { generateText } from './providers/index.js'
 import { parseAiResponse } from './utils/responseParser.js'
 import { cleanResponseText } from './utils/responseCleaner.js'
 import { isValidCoverLetter } from './utils/responseValidator.js'

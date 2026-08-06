@@ -44,30 +44,30 @@ describe('downloadCoverLetterAsPdf', () => {
     addPageMock.mockClear()
   })
 
-  it('calls save with the default filename when none is provided', () => {
-    downloadCoverLetterAsPdf('Dear Hiring Manager,\n\nThank you.')
+  it('calls save with the default filename when none is provided', async () => {
+    await downloadCoverLetterAsPdf('Dear Hiring Manager,\n\nThank you.')
     expect(saveMock).toHaveBeenCalledWith('Cover_Letter.pdf')
   })
 
-  it('calls save with a custom filename', () => {
-    downloadCoverLetterAsPdf('Some content here.', 'My_Letter')
+  it('calls save with a custom filename', async () => {
+    await downloadCoverLetterAsPdf('Some content here.', 'My_Letter')
     expect(saveMock).toHaveBeenCalledWith('My_Letter.pdf')
   })
 
-  it('does not throw on multi-paragraph content', () => {
+  it('does not throw on multi-paragraph content', async () => {
     const text = 'Paragraph one.\n\nParagraph two.\n\nParagraph three.'
-    expect(() => downloadCoverLetterAsPdf(text)).not.toThrow()
+    await downloadCoverLetterAsPdf(text) // rejects → test fails automatically
   })
 
-  it('adds extra pages when content is long enough to overflow one page', () => {
+  it('adds extra pages when content is long enough to overflow one page', async () => {
     // ~2000 "lines" (one word each, per the mock's splitTextToSize)
     // comfortably exceeds one A4 page at 16pt line height.
     const longParagraph = 'word '.repeat(2000)
-    downloadCoverLetterAsPdf(longParagraph)
+    await downloadCoverLetterAsPdf(longParagraph)
     expect(addPageMock).toHaveBeenCalled()
   })
 
-  it('handles empty input without throwing', () => {
-    expect(() => downloadCoverLetterAsPdf('')).not.toThrow()
+  it('handles empty input without throwing', async () => {
+    await downloadCoverLetterAsPdf('') // rejects → test fails automatically
   })
 })
