@@ -8,6 +8,7 @@ import {
   extractTextFromDocx,
   fileToBase64,
   formatFileSize,
+  FileParseTimeoutError,
 } from '../utils/fileParsers'
 
 const ACCEPT_ATTR = '.pdf,.docx,.png,.jpg,.jpeg'
@@ -58,8 +59,12 @@ function ResumeUpload({ resumeText, onTextExtracted, onImageExtracted, onClear }
         const base64 = await fileToBase64(file)
         onImageExtracted({ base64, mimeType: file.type })
       }
-    } catch {
-      setError('Could not read this file. Try a different file, or paste your resume text instead.')
+    } catch (err) {
+      if (err instanceof FileParseTimeoutError) {
+        setError('This file is taking too long to process. Try a smaller file, or paste your resume text instead.')
+      } else {
+        setError('Could not read this file. Try a different file, or paste your resume text instead.')
+      }
       setFileMeta(null)
     } finally {
       setParsing(false)

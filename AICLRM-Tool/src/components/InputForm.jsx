@@ -1,6 +1,7 @@
 import ResumeUpload from './ResumeUpload'
 import TextAreaField from './TextAreaField'
 import GenerateButton from './GenerateButton'
+import ConsentCheckbox from './ConsentCheckbox'
 import { RESUME_MAX_LENGTH } from '../constants/limits'
 import { JOB_DESCRIPTION_MAX_LENGTH } from '../constants/limits'
 function InputForm({
@@ -11,12 +12,15 @@ function InputForm({
   hasResume,
   jobDescription,
   setJobDescription,
+  consentGiven,
+  setConsentGiven,
   onGenerate,
   loading,
 }) {
   const isDisabled =
     !hasResume ||
     jobDescription.trim() === '' ||
+    !consentGiven ||
     resumeText.length > RESUME_MAX_LENGTH ||
     jobDescription.length > JOB_DESCRIPTION_MAX_LENGTH
 
@@ -47,6 +51,8 @@ function InputForm({
         maxLength={JOB_DESCRIPTION_MAX_LENGTH}
         required
       />
+
+      <ConsentCheckbox checked={consentGiven} onChange={setConsentGiven} />
 
       <GenerateButton disabled={isDisabled} loading={loading} />
     </form>

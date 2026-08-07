@@ -13,6 +13,7 @@ function GeneratorSection() {
   const [missingKeywords, setMissingKeywords] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [consentGiven, setConsentGiven] = useState(false)
 
   // Double-submit guard (Enter + click race), on top of disabled button state.
   const requestInFlight = useRef(false)
@@ -36,6 +37,7 @@ function GeneratorSection() {
 
   const handleGenerate = async () => {
     if (requestInFlight.current) return
+    if (!consentGiven) return
     requestInFlight.current = true
 
     setError('')
@@ -83,6 +85,8 @@ function GeneratorSection() {
             hasResume={hasResume}
             jobDescription={jobDescription}
             setJobDescription={setJobDescription}
+            consentGiven={consentGiven}
+            setConsentGiven={setConsentGiven}
             onGenerate={handleGenerate}
             loading={loading}
           />

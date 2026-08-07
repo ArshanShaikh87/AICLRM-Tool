@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { getDocument } from 'pdfjs-dist'
 
 // Mock pdfjs-dist   we're testing our wrapper's join/cleanup logic,
 // not pdfjs's own parsing correctness.
@@ -40,6 +41,7 @@ const {
   fileToBase64,
   extractTextFromPdf,
   extractTextFromDocx,
+  FileParseTimeoutError,
 } = await import('./fileParsers.js')
 
 function makeFile(content, name, type) {
@@ -117,5 +119,23 @@ describe('extractTextFromDocx', () => {
     const text = await extractTextFromDocx(file)
 
     expect(text).toBe('Resume text with trailing whitespace.')
+  })
+})
+
+describe('parse timeout guard (Phase 6 — File-parsing timeout)', () => {
+  afterEach(() => vi.useRealTimers())
+
+  it('rejects with FileParseTimeoutError instead of hanging forever on a stuck PDF', async () => {
+    vi.useFakeTimers()
+    // Simulate pdfjs never resolving   e.g. a malformed/adversarial PDF
+    // structure that the parser gets stuck on.
+    getDocument.mockImplementationOnce(() => ({ promise: new Promise(() => {}) }))
+
+    const file = makeFile('fake-pdf-bytes', 'r.pdf', 'application/pdf')
+    const resultPromise = extractTextFromPdf(file)
+    const expectation = expect(resultPromise).rejects.toBeInstanceOf(FileParseTimeoutError)
+
+    await vi.advanceTimersByTimeAsync(20_000)
+    await expectation
   })
 })
