@@ -11,6 +11,7 @@
       content="Paste your resume and a job description, get a tailored cover letter and the exact keywords you're missing   free, no sign-up, nothing stored."
     />
     <link rel="canonical" href="https://aiclrm.vercel.app/" />
+    
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -21,16 +22,19 @@
       content="Paste your resume and a job description, get a tailored cover letter and the exact keywords you're missing   free, no sign-up, nothing stored."
     />
     <meta property="og:url" content="https://aiclrm.vercel.app/" />
-    <meta property="og:image" content="https://aiclrm.vercel.app/favicon.svg" />
+    <meta property="og:image" content="https://aiclrm.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="CoverLetter — turn one resume into the letter every job description asks for." />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CoverLetter — AI Cover Letter Generator for Indian Job Seekers" />
     <meta
       name="twitter:description"
       content="Paste your resume and a job description, get a tailored cover letter and the exact keywords you're missing   free, no sign-up, nothing stored."
     />
-    <meta name="twitter:image" content="https://aiclrm.vercel.app/favicon.svg" />
+    <meta name="twitter:image" content="https://aiclrm.vercel.app/og-image.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,6 +42,21 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!--
+      Privacy-respecting analytics (Umami) — no cookies, no personal data,
+      aligns with the "nothing stored" pitch (unlike Google Analytics).
+      1. Sign up free at https://cloud.umami.is (or self-host) and add this site.
+      2. Replace YOUR-WEBSITE-ID below with the id Umami gives you.
+      3. If self-hosting on a different domain, update src below AND the
+         script-src / connect-src entries in vercel.json to match.
+    -->
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="cdbb1897-6cb3-4162-8de4-4066678a4022"
+    ></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="cdbb1897-6cb3-4162-8de4-4066678a4022"></script>
   </head>
   <body>
     <div id="root"></div>

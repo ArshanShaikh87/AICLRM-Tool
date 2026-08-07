@@ -60,3 +60,9 @@ Multiple AI providers actually switch karna live   sirf architecture ready rakho
 PWA / offline mode   nice-to-have hai, priority nahi
 
 # Sentry → UptimeRobot → RUNBOOK.md 
+
+Performance (77 score) — abhi skip karo, backlog mein daal do
+Reasoning: Ye tumhare roadmap ki kisi bhi phase mein explicitly nahi hai. Render-blocking/long-tasks fix karna deeper investigation maangta hai (font loading, code splitting tuning), aur tumhara apna Do_and_Dont.md principle hai — "abhi naye features/polish nahi, pehle leak-proof aur core cheezein". 77 "needs improvement" hai but "failing" nahi — 15-20 validation users ke scale pe real impact minimal hoga. Jab traffic real ho, tab revisit karna sahi rahega.
+
+Analytics — bhi abhi skip, Phase 6 ke baad decide karna
+Ye Do_and_Dont.md mein khud "optional/nice-to-have" tag hai. Tumhare roadmap mein iske baad Phase 6 (Legal & Compliance) hai jo zyada critical hai (consent checkbox, file-parsing timeout) kyunki tumhara product public deployment ke liye ban raha hai — legal gaps zyada risky hain analytics na hone se.
